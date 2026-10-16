@@ -1,0 +1,21 @@
+{
+	"name": "DesveladoAP",
+	"namespace": "JLannoo",
+	"version_number": "0.0.1",
+	"description": "An Archipelago implementation for Desvelado",
+	"website_url": "https://github.com/JLannoo/DesveladoAP",
+	"dependencies": [],
+	"extra": {
+		"godot": {
+			"authors": ["JLannoo"],
+			"tags": ["DesveladoAP", "Randomizer"],
+			"description_rich": "An Archipelago implementation for Desvelado",
+			"optional_dependencies": [],
+			"load_before": [],
+			"incompatibilities": [],
+			"compatible_mod_loader_version": ["7.0.1"],
+			"compatible_game_version": ["1.1.0"],
+			"config_schema": {}
+		}
+	}
+}

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0ovofocoscyg"]
+
+[ext_resource type="Script" path="res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd" id="1_41ph8"]
+[ext_resource type="Script" path="res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/version.gd" id="2_2e7gq"]
+
+[sub_resource type="Resource" id="Resource_pmgvy"]
+script = ExtResource("2_2e7gq")
+major = 0
+minor = 0
+build = 0
+
+[sub_resource type="Resource" id="Resource_m1v20"]
+script = ExtResource("2_2e7gq")
+major = 0
+minor = 5
+build = 0
+
+[node name="AP" type="Node"]
+script = ExtResource("1_41ph8")
+AP_GAME_NAME = "Desvelado"
+AP_CLIENT_VERSION = SubResource("Resource_pmgvy")
+AP_VERSION = SubResource("Resource_m1v20")
+AP_PRINT_ITEMS_ON_CONNECT = true
+AP_AUTO_OPEN_CONSOLE = true
+AP_ENABLE_PROGUSEFUL = true
+AP_CONSOLE_CONNECTION_OPEN = true
+
+[node name="HangTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="HangTimer" to="." method="force_disconnect"]
