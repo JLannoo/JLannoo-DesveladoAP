@@ -3,10 +3,14 @@ extends Node
 const GODOTMODDING_EXAMPLEMOD_DIR := "JLannoo-DesveladoAP"
 const GODOTMODDING_EXAMPLEMOD_LOG_NAME := "JLannoo-DesveladoAP:Main"
 
-var mod_dir_path := ""
-var extensions_dir_path := ""
+var mod_dir_path: String = ""
+var extensions_dir_path: String = ""
 
-var cleared_rooms := {}
+var cleared_rooms: Dictionary = {}
+
+var player: Player
+
+var ap_console: Window
 
 @export var AP_NOTIFICATION_MANAGER = preload("res://mods-unpacked/JLannoo-DesveladoAP/ui/ap_notification_manager.gd")
 var notification_manager: CanvasLayer
@@ -32,6 +36,8 @@ func _ready() -> void:
 
 	ModLoaderLog.info("Ready!", GODOTMODDING_EXAMPLEMOD_LOG_NAME)
 
+	Archipelago.on_attach_console.connect(_on_attach_console)
+
 func _on_node_added(node: Node) -> void:
 	# Hook into room adding for catching all room IDs
 	if node is Room:
@@ -44,3 +50,13 @@ func _on_room_cleared(s) -> void:
 
 func _trigger_notification(text: String, count: String) -> void:
 	notification_manager.notify(text, count)
+
+func _on_attach_console():
+	ap_console = get_node("/root/Archipelago/Console")
+	ap_console.tree_exited.connect(_on_close_console)
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+func _on_close_console():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
