@@ -53,6 +53,9 @@ func _trigger_notification(text: String, count: String) -> void:
 
 func _on_attach_console():
 	ap_console = get_node("/root/Archipelago/Console")
+	
+	# Don't disable input to the console while game is paused.
+	ap_console.process_mode = Node.PROCESS_MODE_ALWAYS
 	ap_console.tree_exited.connect(_on_close_console)
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
