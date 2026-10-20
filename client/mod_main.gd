@@ -26,6 +26,10 @@ func install_script_extensions() -> void:
 
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/bonus_collectable.gd"))
 	
+	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/switch.gd"))
+	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/falling_platform.gd"))
+	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/lamp_chandelier.gd"))
+
 func _ready() -> void:
 	var tree = get_tree()
 	tree.node_added.connect(_on_node_added)
