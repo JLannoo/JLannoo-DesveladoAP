@@ -1,7 +1,7 @@
 extends Node
 
-const GODOTMODDING_EXAMPLEMOD_DIR := "JLannoo-DesveladoAP"
-const GODOTMODDING_EXAMPLEMOD_LOG_NAME := "JLannoo-DesveladoAP:Main"
+const MOD_DIR := "JLannoo-DesveladoAP"
+const LOG_NAME := "JLannoo-DesveladoAP:Main"
 
 var mod_dir_path: String = ""
 var extensions_dir_path: String = ""
@@ -16,7 +16,7 @@ var ap_console: Window
 var notification_manager: CanvasLayer
 
 func _init() -> void:
-	mod_dir_path = ModLoaderMod.get_unpacked_dir().path_join(GODOTMODDING_EXAMPLEMOD_DIR)
+	mod_dir_path = ModLoaderMod.get_unpacked_dir().path_join(MOD_DIR)
 	install_script_extensions()
 
 func install_script_extensions() -> void:
@@ -32,7 +32,8 @@ func _ready() -> void:
 	add_child(notification_manager)
 	
 	Console.add_command("notification", _trigger_notification, 2)
-	Console.add_command("test", func(): notification_manager.notify("Hello from DesveladoAP", "6/9"))
+
+	ModLoaderLog.info("Ready!", LOG_NAME)
 
 	ModLoaderLog.info("Ready!", GODOTMODDING_EXAMPLEMOD_LOG_NAME)
 
@@ -43,13 +44,21 @@ func _on_node_added(node: Node) -> void:
 	if node is Room:
 		node.room_cleared.connect(_on_room_cleared.bind(node))
 
+	if node is Player and not player:
+		player = node
+		if not player.died.is_connected(_on_player_died):
+			player.died.connect(_on_player_died)
+
 func _on_room_cleared(s) -> void:
 	if !cleared_rooms.has(s.name):
 		cleared_rooms[s.name] = true
-		ModLoaderLog.info("Received room clear!. %s" % [s], GODOTMODDING_EXAMPLEMOD_LOG_NAME)
+		ModLoaderLog.info("Received room clear!. %s" % [s], LOG_NAME)
 
 func _trigger_notification(text: String, count: String) -> void:
 	notification_manager.notify(text, count)
+
+func _on_player_died():
+	Archipelago.send_deathlink()
 
 func _on_attach_console():
 	ap_console = get_node("/root/Archipelago/Console")
