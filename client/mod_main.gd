@@ -35,7 +35,7 @@ func _ready() -> void:
 
 	ModLoaderLog.info("Ready!", LOG_NAME)
 
-	ModLoaderLog.info("Ready!", GODOTMODDING_EXAMPLEMOD_LOG_NAME)
+	_try_ap_connect()
 
 	Archipelago.on_attach_console.connect(_on_attach_console)
 
@@ -59,6 +59,9 @@ func _trigger_notification(text: String, count: String) -> void:
 
 func _on_player_died():
 	Archipelago.send_deathlink()
+
+func _try_ap_connect():
+	Archipelago.ap_connect("localhost", "38281", "Desvelado")
 
 func _on_attach_console():
 	ap_console = get_node("/root/Archipelago/Console")
