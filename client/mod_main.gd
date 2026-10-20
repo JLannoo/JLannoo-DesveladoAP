@@ -24,6 +24,8 @@ func install_script_extensions() -> void:
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Menus/main_menu_v2.gd"))
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Menus/pause_menu.gd"))
 
+	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/bonus_collectable.gd"))
+	
 func _ready() -> void:
 	var tree = get_tree()
 	tree.node_added.connect(_on_node_added)
