@@ -8,38 +8,55 @@ if TYPE_CHECKING:
     from .world import DesveladoWorld
 
 BONNIE_BONES_AMOUNT: Final[int] = 15
+MAP_PART_AMOUNT: Final[int] = 8
+
+class DesveladoItem(Item):
+    game = "Desvelado"
 
 class DesveladoItemData(NamedTuple):
     name: str
     classification: ItemClassification = ItemClassification.progression
 
 MAP_ITEMS: List[DesveladoItemData] = [
-    DesveladoItemData("Progressive Map")
+    DesveladoItemData("Castle 1 Map Part"),
+    DesveladoItemData("Castle 2 Map Part"),
+    DesveladoItemData("Castle Boss Map Part"),
+
+    DesveladoItemData("Sewers 1 Map Part"),
+    DesveladoItemData("Sewers 2 Map Part"),
+    DesveladoItemData("Sewers 3 Map Part"),
+    DesveladoItemData("Sewers Run Map Part"),
+
+    DesveladoItemData("Caves 1 Map Part"),
+    DesveladoItemData("Caves 2 Map Part"),
+    DesveladoItemData("Caves 3 Map Part"),
+    DesveladoItemData("Caves Run Map Part"),
 ]
 
-class DesveladoItem(Item):
-    game = "Desvelado"
-
 UNLOCK_ITEMS: List[DesveladoItemData] = [
-    DesveladoItemData("Chandeliers Unlock"),
-    DesveladoItemData("Ghost Walls Unlock"),
-    DesveladoItemData("Falling Platforms Unlock"),
     DesveladoItemData("Key Switch Unlock"),
     DesveladoItemData("Ghost Switch Unlock"),
+    DesveladoItemData("Falling Platforms Unlock"),
+    DesveladoItemData("Ghost Walls Unlock"),
+    DesveladoItemData("Chandeliers Unlock"),
 ]
 
 BONNIE_ITEMS: List[DesveladoItemData] = [
     DesveladoItemData("Bonnie Bone", ItemClassification.filler)
 ] * BONNIE_BONES_AMOUNT
 
-ALL_ITEM_DATA: List[DesveladoItemData] = MAP_ITEMS + UNLOCK_ITEMS + BONNIE_ITEMS
+FILLER: List[DesveladoItemData] = [
+    DesveladoItemData("Nothing!", ItemClassification.filler)
+]
+
+ALL_ITEM_DATA: List[DesveladoItemData] = MAP_ITEMS + UNLOCK_ITEMS + BONNIE_ITEMS + FILLER
 
 ITEM_NAME_TO_ID = {
     item.name: id+1 for id, item in enumerate(ALL_ITEM_DATA)
 }
 
 def create_random_filler_item(world: DesveladoWorld):
-    return DesveladoItemData("Bonnie Bone", ItemClassification.filler)
+    return DesveladoItemData("Nothing!", ItemClassification.filler)
 
 def create_all_items(world: DesveladoWorld):
     itempool: List[Item] = [
