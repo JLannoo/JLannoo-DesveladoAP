@@ -1,0 +1,4885 @@
+{
+  "levels": [
+    {
+      "id": 0,
+      "name": "ZONA1_1",
+      "necessary_levels": [],
+      "room_connections": [
+        {
+          "dest_room": "Room_01",
+          "source_room": "Room_00",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_02",
+          "source_room": "Room_01",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_13",
+          "source_room": "Room_02",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_11",
+          "source_room": "Room_03",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_12",
+          "source_room": "Room_04",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_14",
+          "source_room": "Room_04",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_06",
+          "source_room": "Room_05",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_17",
+          "source_room": "Room_06",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_08",
+          "source_room": "Room_07",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_20",
+          "source_room": "Room_08",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_09",
+          "source_room": "Room_08",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_10",
+          "source_room": "Room_09",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_08",
+          "source_room": "Room_09",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_09",
+          "source_room": "Room_10",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_33",
+          "source_room": "Room_10",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_16",
+          "source_room": "Room_11",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_05",
+          "source_room": "Room_12",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_03",
+          "source_room": "Room_13",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_04",
+          "source_room": "Room_15",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_15",
+          "source_room": "Room_16",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_18",
+          "source_room": "Room_17",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_22",
+          "source_room": "Room_18",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_21",
+          "source_room": "Room_20",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_32",
+          "source_room": "Room_21",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_07",
+          "source_room": "Room_22",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_46",
+          "source_room": "Room_23",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_45",
+          "source_room": "Room_29",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_29",
+          "source_room": "Room_30",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_44",
+          "source_room": "Room_32",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_43",
+          "source_room": "Room_32",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_30",
+          "source_room": "Room_44",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_23",
+          "source_room": "Room_45",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_47",
+          "source_room": "Room_46",
+          "type": "door"
+        }
+      ],
+      "rooms": [
+        {
+          "exits": [
+            {
+              "dest_room": "Room_01",
+              "start_open": true,
+              "type": "door"
+            }
+          ],
+          "index": 0,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_00"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_02",
+              "start_open": true,
+              "type": "door"
+            }
+          ],
+          "index": 1,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_01"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_13",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 2,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_02"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_11",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 3,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_03"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_12",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_14",
+              "type": "bonus_door"
+            },
+            {
+              "dest_room": "Room_14",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 4,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_04"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_06",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 5,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_05"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_17",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 6,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_06"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_08",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 7,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_07"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_20",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_09",
+              "start_open": true,
+              "type": "door"
+            }
+          ],
+          "index": 8,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_08"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_10",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_08",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 9,
+          "is_bonus": false,
+          "is_branch": true,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_09"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_09",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_33",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 10,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_10"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_16",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 11,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_11"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_05",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 12,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_12"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_03",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 13,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_13"
+        },
+        {
+          "exits": [],
+          "index": 14,
+          "is_bonus": true,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "id": 2,
+              "name": "bonus_collectable_2",
+              "type": "bonus_collectable"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_14"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_04",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 15,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_15"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_15",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 16,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_16"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_18",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 17,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_17"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_22",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 18,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_18"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_21",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 20,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_20"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_32",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 21,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_21"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_07",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 22,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_22"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_46",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 23,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_23"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_45",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 29,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_29"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_29",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 30,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_30"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_44",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_43",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 32,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_32"
+        },
+        {
+          "exits": [],
+          "index": 33,
+          "is_bonus": true,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "id": 1,
+              "name": "bonus_collectable_1",
+              "type": "bonus_collectable"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_33"
+        },
+        {
+          "exits": [],
+          "index": 43,
+          "is_bonus": true,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "id": 5,
+              "name": "bonus_collectable_5",
+              "type": "bonus_collectable"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_43"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_30",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 44,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_44"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_23",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 45,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_45"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_47",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 46,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_46"
+        },
+        {
+          "exits": [],
+          "index": 47,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": true,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            },
+            {
+              "name": "map_part",
+              "type": "map_part"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_47"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "ZONA1_2",
+      "necessary_levels": [
+        0
+      ],
+      "room_connections": [
+        {
+          "dest_room": "Room_49",
+          "source_room": "Room_48",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_39",
+          "source_room": "Room_12",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_25",
+          "source_room": "Room_24",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_27",
+          "source_room": "Room_25",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_42",
+          "source_room": "Room_25",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_12",
+          "source_room": "Room_26",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_26",
+          "source_room": "Room_27",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_31",
+          "source_room": "Room_28",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_40",
+          "source_room": "Room_31",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_36",
+          "source_room": "Room_31",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_31",
+          "source_room": "Room_34",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_38",
+          "source_room": "Room_36",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_37",
+          "source_room": "Room_36",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_28",
+          "source_room": "Room_38",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_34",
+          "source_room": "Room_39",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_51",
+          "source_room": "Room_40",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_50",
+          "source_room": "Room_49",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_24",
+          "source_room": "Room_50",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_52",
+          "source_room": "Room_51",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_53",
+          "source_room": "Room_52",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_41",
+          "source_room": "Room_53",
+          "type": "door"
+        }
+      ],
+      "rooms": [
+        {
+          "exits": [
+            {
+              "dest_room": "Room_49",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 0,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_48"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_39",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 12,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_12"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_25",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 24,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_24"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_27",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_42",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 25,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_25"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_12",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 26,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_26"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_26",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 27,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_27"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_31",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 28,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_28"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_40",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_36",
+              "start_open": true,
+              "type": "door"
+            }
+          ],
+          "index": 31,
+          "is_bonus": false,
+          "is_branch": true,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_31"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_31",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 34,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_34"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_38",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_37",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 36,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_36"
+        },
+        {
+          "exits": [],
+          "index": 37,
+          "is_bonus": true,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "id": 3,
+              "name": "bonus_collectable_3",
+              "type": "bonus_collectable"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_37"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_28",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 38,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_38"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_34",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 39,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_39"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_51",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 40,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_40"
+        },
+        {
+          "exits": [],
+          "index": 41,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": true,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            },
+            {
+              "name": "map_part",
+              "type": "map_part"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_41"
+        },
+        {
+          "exits": [],
+          "index": 42,
+          "is_bonus": true,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "id": 4,
+              "name": "bonus_collectable_4",
+              "type": "bonus_collectable"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_42"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_50",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 49,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_49"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_24",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 50,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_50"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_52",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 51,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_51"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_53",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 52,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_52"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_41",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 53,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_53"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "ZONA2_1",
+      "necessary_levels": [
+        0
+      ],
+      "room_connections": [
+        {
+          "dest_room": "Room_30",
+          "source_room": "Room_00",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_02",
+          "source_room": "Room_01",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_07",
+          "source_room": "Room_02",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_03",
+          "source_room": "Room_07",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_04",
+          "source_room": "Room_03",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_05",
+          "source_room": "Room_04",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_06",
+          "source_room": "Room_04",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_08",
+          "source_room": "Room_05",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_09",
+          "source_room": "Room_08",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_45",
+          "source_room": "Room_09",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_31",
+          "source_room": "Room_30",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_01",
+          "source_room": "Room_31",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_53",
+          "source_room": "Room_45",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_54",
+          "source_room": "Room_53",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_55",
+          "source_room": "Room_54",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_56",
+          "source_room": "Room_55",
+          "type": "door"
+        }
+      ],
+      "rooms": [
+        {
+          "exits": [
+            {
+              "dest_room": "Room_30",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 0,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_00"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_02",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 1,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_01"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_07",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 2,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_02"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_03",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 3,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_07"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_04",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 4,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_03"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_05",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_06",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 5,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_04"
+        },
+        {
+          "exits": [],
+          "index": 6,
+          "is_bonus": true,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "id": 6,
+              "name": "bonus_collectable_6",
+              "type": "bonus_collectable"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_06"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_08",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 7,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_05"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_09",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 8,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_08"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_45",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 9,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_09"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_31",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 30,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_30"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_01",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 31,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_31"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_53",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 52,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_45"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_54",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 53,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_53"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_55",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 54,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_54"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_56",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 55,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_55"
+        },
+        {
+          "exits": [],
+          "index": 56,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": true,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            },
+            {
+              "name": "map_part",
+              "type": "map_part"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_56"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "ZONA2_2",
+      "necessary_levels": [
+        2
+      ],
+      "room_connections": [
+        {
+          "dest_room": "Room_10",
+          "source_room": "Room_57",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_11",
+          "source_room": "Room_10",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_12",
+          "source_room": "Room_11",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_13",
+          "source_room": "Room_12",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_16",
+          "source_room": "Room_13",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_15",
+          "source_room": "Room_14",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_17",
+          "source_room": "Room_15",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_14",
+          "source_room": "Room_16",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_27",
+          "source_room": "Room_17",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_47",
+          "source_room": "Room_17",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_19",
+          "source_room": "Room_18",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_34",
+          "source_room": "Room_19",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_25",
+          "source_room": "Room_20",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_22",
+          "source_room": "Room_21",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_23",
+          "source_room": "Room_21",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_20",
+          "source_room": "Room_22",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_26",
+          "source_room": "Room_25",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_27",
+          "source_room": "Room_26",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_18",
+          "source_room": "Room_27",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_58",
+          "source_room": "Room_27",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_21",
+          "source_room": "Room_34",
+          "type": "door"
+        }
+      ],
+      "rooms": [
+        {
+          "exits": [
+            {
+              "dest_room": "Room_10",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 0,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_57"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_11",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 10,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_10"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_12",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 11,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_11"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_13",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 12,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_12"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_16",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 13,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_13"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_15",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 14,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_14"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_17",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 15,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_15"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_14",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 16,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_16"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_27",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_47",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 17,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_17"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_19",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 18,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_18"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_34",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 19,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_19"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_25",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 20,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch"
+          ],
+          "name": "Room_20"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_22",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_23",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 21,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch"
+          ],
+          "name": "Room_21"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_20",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 22,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_22"
+        },
+        {
+          "exits": [],
+          "index": 23,
+          "is_bonus": true,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "id": 8,
+              "name": "bonus_collectable_8",
+              "type": "bonus_collectable"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch"
+          ],
+          "name": "Room_23"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_26",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 25,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch"
+          ],
+          "name": "Room_25"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_27",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 26,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_26"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_18",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_58",
+              "start_open": true,
+              "type": "door"
+            }
+          ],
+          "index": 27,
+          "is_bonus": false,
+          "is_branch": true,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_27"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_21",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 34,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch"
+          ],
+          "name": "Room_34"
+        },
+        {
+          "exits": [],
+          "index": 47,
+          "is_bonus": true,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "id": 7,
+              "name": "bonus_collectable_7",
+              "type": "bonus_collectable"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_47"
+        },
+        {
+          "exits": [],
+          "index": 58,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": true,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            },
+            {
+              "name": "map_part",
+              "type": "map_part"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_58"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "ZONA2_3",
+      "necessary_levels": [
+        3,
+        1
+      ],
+      "room_connections": [
+        {
+          "dest_room": "Room_28",
+          "source_room": "Room_59",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_29",
+          "source_room": "Room_28",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_46",
+          "source_room": "Room_28",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_32",
+          "source_room": "Room_29",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_33",
+          "source_room": "Room_32",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_36",
+          "source_room": "Room_33",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_39",
+          "source_room": "Room_44",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_40",
+          "source_room": "Room_36",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_42",
+          "source_room": "Room_37",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_48",
+          "source_room": "Room_38",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_41",
+          "source_room": "Room_38",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_38",
+          "source_room": "Room_39",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_37",
+          "source_room": "Room_40",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_44",
+          "source_room": "Room_42",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_52",
+          "source_room": "Room_51",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_49",
+          "source_room": "Room_48",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_50",
+          "source_room": "Room_49",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_51",
+          "source_room": "Room_50",
+          "type": "door"
+        }
+      ],
+      "rooms": [
+        {
+          "exits": [
+            {
+              "dest_room": "Room_28",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 0,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_59"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_29",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_46",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 28,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_28"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_32",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 29,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch"
+          ],
+          "name": "Room_29"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_33",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 32,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch",
+            "key_switch"
+          ],
+          "name": "Room_32"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_36",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 33,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch"
+          ],
+          "name": "Room_33"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_39",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 35,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_44"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_40",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 36,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch",
+            "key_switch"
+          ],
+          "name": "Room_36"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_42",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 37,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch",
+            "key_switch"
+          ],
+          "name": "Room_37"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_48",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_41",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 38,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch",
+            "key_switch"
+          ],
+          "name": "Room_38"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_38",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 39,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_39"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_37",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 40,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch"
+          ],
+          "name": "Room_40"
+        },
+        {
+          "exits": [],
+          "index": 41,
+          "is_bonus": true,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "id": 10,
+              "name": "bonus_collectable_10",
+              "type": "bonus_collectable"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch",
+            "key_switch"
+          ],
+          "name": "Room_41"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_44",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 42,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch"
+          ],
+          "name": "Room_42"
+        },
+        {
+          "exits": [],
+          "index": 44,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": true,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            },
+            {
+              "name": "map_part",
+              "type": "map_part"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_52"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_52",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 45,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch",
+            "key_switch"
+          ],
+          "name": "Room_51"
+        },
+        {
+          "exits": [],
+          "index": 46,
+          "is_bonus": true,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "id": 9,
+              "name": "bonus_collectable_9",
+              "type": "bonus_collectable"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_46"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_49",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 48,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_48"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_50",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 49,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_49"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_51",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 50,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "key_switch"
+          ],
+          "name": "Room_50"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "ZONA3_1",
+      "necessary_levels": [
+        2
+      ],
+      "room_connections": [
+        {
+          "dest_room": "Room_02",
+          "source_room": "Room_01",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_03",
+          "source_room": "Room_02",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_04",
+          "source_room": "Room_03",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_05",
+          "source_room": "Room_04",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_06",
+          "source_room": "Room_05",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_07",
+          "source_room": "Room_06",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_08",
+          "source_room": "Room_07",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_09",
+          "source_room": "Room_08",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_10",
+          "source_room": "Room_09",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_11",
+          "source_room": "Room_10",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_12",
+          "source_room": "Room_11",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_13",
+          "source_room": "Room_12",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_14",
+          "source_room": "Room_13",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_15",
+          "source_room": "Room_14",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_16",
+          "source_room": "Room_15",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_17",
+          "source_room": "Room_16",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_19",
+          "source_room": "Room_16",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_18",
+          "source_room": "Room_17",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_20",
+          "source_room": "Room_18",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_21",
+          "source_room": "Room_20",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_26",
+          "source_room": "Room_20",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_22",
+          "source_room": "Room_21",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_23",
+          "source_room": "Room_22",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_24",
+          "source_room": "Room_23",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_25",
+          "source_room": "Room_24",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_64",
+          "source_room": "Room_25",
+          "type": "door"
+        }
+      ],
+      "rooms": [
+        {
+          "exits": [
+            {
+              "dest_room": "Room_02",
+              "start_open": true,
+              "type": "door"
+            }
+          ],
+          "index": 0,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_01"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_03",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 1,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_02"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_04",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 2,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_03"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_05",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 3,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform"
+          ],
+          "name": "Room_04"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_06",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 4,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform"
+          ],
+          "name": "Room_05"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_07",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 5,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform"
+          ],
+          "name": "Room_06"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_08",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 6,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform"
+          ],
+          "name": "Room_07"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_09",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 7,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform"
+          ],
+          "name": "Room_08"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_10",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 8,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform"
+          ],
+          "name": "Room_09"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_11",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 9,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform"
+          ],
+          "name": "Room_10"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_12",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 10,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform"
+          ],
+          "name": "Room_11"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_13",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 11,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier"
+          ],
+          "name": "Room_12"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_14",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 12,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier"
+          ],
+          "name": "Room_13"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_15",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 13,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier"
+          ],
+          "name": "Room_14"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_16",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 14,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform"
+          ],
+          "name": "Room_15"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_17",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_19",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 15,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform"
+          ],
+          "name": "Room_16"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_18",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 16,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform"
+          ],
+          "name": "Room_17"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_20",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 17,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform"
+          ],
+          "name": "Room_18"
+        },
+        {
+          "exits": [],
+          "index": 18,
+          "is_bonus": true,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "id": 11,
+              "name": "bonus_collectable_11",
+              "type": "bonus_collectable"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform"
+          ],
+          "name": "Room_19"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_21",
+              "start_open": true,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_26",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 19,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform"
+          ],
+          "name": "Room_20"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_22",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 20,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_21"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_23",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 21,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform"
+          ],
+          "name": "Room_22"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_24",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 22,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform"
+          ],
+          "name": "Room_23"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_25",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 23,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform"
+          ],
+          "name": "Room_24"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_64",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 24,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform"
+          ],
+          "name": "Room_25"
+        },
+        {
+          "exits": [],
+          "index": 26,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_26"
+        },
+        {
+          "exits": [],
+          "index": 63,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": true,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            },
+            {
+              "name": "map_part",
+              "type": "map_part"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_64"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "ZONA3_2",
+      "necessary_levels": [
+        5
+      ],
+      "room_connections": [
+        {
+          "dest_room": "Room_26",
+          "source_room": "Room_65",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_27",
+          "source_room": "Room_26",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_28",
+          "source_room": "Room_27",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_34",
+          "source_room": "Room_28",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_35",
+          "source_room": "Room_29",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_31",
+          "source_room": "Room_30",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_32",
+          "source_room": "Room_31",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_33",
+          "source_room": "Room_32",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_58",
+          "source_room": "Room_32",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_29",
+          "source_room": "Room_33",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_30",
+          "source_room": "Room_34",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_44",
+          "source_room": "Room_35",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_36",
+          "source_room": "Room_35",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_38",
+          "source_room": "Room_37",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_63",
+          "source_room": "Room_38",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_43",
+          "source_room": "Room_42",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_54",
+          "source_room": "Room_43",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_62",
+          "source_room": "Room_44",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_42",
+          "source_room": "Room_61",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_37",
+          "source_room": "Room_62",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_61",
+          "source_room": "Room_63",
+          "type": "door"
+        }
+      ],
+      "rooms": [
+        {
+          "exits": [
+            {
+              "dest_room": "Room_26",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 0,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_wall"
+          ],
+          "name": "Room_65"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_27",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 25,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_wall"
+          ],
+          "name": "Room_26"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_28",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 26,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_wall"
+          ],
+          "name": "Room_27"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_34",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 27,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_wall"
+          ],
+          "name": "Room_28"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_35",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 28,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "ghost_wall"
+          ],
+          "name": "Room_29"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_31",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 29,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "ghost_wall"
+          ],
+          "name": "Room_30"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_32",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 30,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform",
+            "ghost_wall"
+          ],
+          "name": "Room_31"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_33",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_58",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 31,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform",
+            "ghost_wall"
+          ],
+          "name": "Room_32"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_29",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 32,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform",
+            "ghost_wall"
+          ],
+          "name": "Room_33"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_30",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 33,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "ghost_wall"
+          ],
+          "name": "Room_34"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_44",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_36",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 34,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform",
+            "ghost_wall"
+          ],
+          "name": "Room_35"
+        },
+        {
+          "exits": [],
+          "index": 35,
+          "is_bonus": true,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "id": 13,
+              "name": "bonus_collectable_13",
+              "type": "bonus_collectable"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform",
+            "ghost_wall"
+          ],
+          "name": "Room_36"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_38",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 36,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_wall"
+          ],
+          "name": "Room_37"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_63",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 37,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform",
+            "ghost_wall"
+          ],
+          "name": "Room_38"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_43",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 41,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "ghost_wall"
+          ],
+          "name": "Room_42"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_54",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 42,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_wall"
+          ],
+          "name": "Room_43"
+        },
+        {
+          "exits": [],
+          "index": 53,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": true,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            },
+            {
+              "name": "map_part",
+              "type": "map_part"
+            }
+          ],
+          "mechanics": [
+            "falling_platform"
+          ],
+          "name": "Room_54"
+        },
+        {
+          "exits": [],
+          "index": 57,
+          "is_bonus": true,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "id": 12,
+              "name": "bonus_collectable_12",
+              "type": "bonus_collectable"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform",
+            "ghost_wall",
+            "key_switch"
+          ],
+          "name": "Room_58"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_62",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 59,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "ghost_wall"
+          ],
+          "name": "Room_44"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_42",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 60,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "ghost_wall"
+          ],
+          "name": "Room_61"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_37",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 61,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "ghost_wall"
+          ],
+          "name": "Room_62"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_61",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 62,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform",
+            "ghost_wall"
+          ],
+          "name": "Room_63"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "ZONA3_3",
+      "necessary_levels": [
+        6,
+        4
+      ],
+      "room_connections": [
+        {
+          "dest_room": "Room_47",
+          "source_room": "Room_39",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_41",
+          "source_room": "Room_40",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_45",
+          "source_room": "Room_41",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_51",
+          "source_room": "Room_41",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_53",
+          "source_room": "Room_60",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_46",
+          "source_room": "Room_45",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_48",
+          "source_room": "Room_46",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_40",
+          "source_room": "Room_47",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_49",
+          "source_room": "Room_48",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_50",
+          "source_room": "Room_49",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_57",
+          "source_room": "Room_49",
+          "type": "bonus_door"
+        },
+        {
+          "dest_room": "Room_52",
+          "source_room": "Room_50",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_59",
+          "source_room": "Room_52",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_55",
+          "source_room": "Room_53",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_56",
+          "source_room": "Room_55",
+          "type": "door"
+        },
+        {
+          "dest_room": "Room_60",
+          "source_room": "Room_59",
+          "type": "door"
+        }
+      ],
+      "rooms": [
+        {
+          "exits": [
+            {
+              "dest_room": "Room_47",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 0,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "key_switch"
+          ],
+          "name": "Room_39"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_41",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 39,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform",
+            "ghost_switch",
+            "ghost_wall"
+          ],
+          "name": "Room_40"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_45",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_51",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 40,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform",
+            "ghost_switch",
+            "ghost_wall"
+          ],
+          "name": "Room_41"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_53",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 43,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "key_switch"
+          ],
+          "name": "Room_60"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_46",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 44,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "ghost_switch",
+            "ghost_wall"
+          ],
+          "name": "Room_45"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_48",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 45,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch",
+            "ghost_wall"
+          ],
+          "name": "Room_46"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_40",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 46,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform",
+            "key_switch"
+          ],
+          "name": "Room_47"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_49",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 47,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch",
+            "ghost_wall",
+            "key_switch"
+          ],
+          "name": "Room_48"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_50",
+              "start_open": false,
+              "type": "door"
+            },
+            {
+              "dest_room": "Room_57",
+              "type": "bonus_door"
+            }
+          ],
+          "index": 48,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "ghost_switch",
+            "ghost_wall"
+          ],
+          "name": "Room_49"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_52",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 49,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "ghost_wall",
+            "key_switch"
+          ],
+          "name": "Room_50"
+        },
+        {
+          "exits": [],
+          "index": 50,
+          "is_bonus": true,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "id": 14,
+              "name": "bonus_collectable_14",
+              "type": "bonus_collectable"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform",
+            "ghost_wall",
+            "key_switch"
+          ],
+          "name": "Room_51"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_59",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 51,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "falling_platform",
+            "ghost_switch",
+            "ghost_wall",
+            "key_switch"
+          ],
+          "name": "Room_52"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_55",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 52,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_53"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_56",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 54,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "falling_platform"
+          ],
+          "name": "Room_55"
+        },
+        {
+          "exits": [],
+          "index": 55,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": true,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            },
+            {
+              "name": "map_part",
+              "type": "map_part"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room_56"
+        },
+        {
+          "exits": [],
+          "index": 56,
+          "is_bonus": true,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "id": 15,
+              "name": "bonus_collectable_15",
+              "type": "bonus_collectable"
+            }
+          ],
+          "mechanics": [
+            "ghost_wall",
+            "key_switch"
+          ],
+          "name": "Room_57"
+        },
+        {
+          "exits": [
+            {
+              "dest_room": "Room_60",
+              "start_open": false,
+              "type": "door"
+            }
+          ],
+          "index": 58,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "key_switch"
+          ],
+          "name": "Room_59"
+        }
+      ]
+    }
+  ]
+}
