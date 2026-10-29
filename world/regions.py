@@ -15,17 +15,17 @@ if TYPE_CHECKING:
 LEVELS_DISPLAY_NAME = {
     "ZONA1_1": "Castle 1",
     "ZONA1_2": "Castle 2",
-    "RUN_1":   "Castle Run",
+    "RUN_1":   "Castle Boss",
 
     "ZONA2_1": "Sewers 1",
     "ZONA2_2": "Sewers 2",
     "ZONA2_3": "Sewers 3",
-    "RUN_2":   "Sewers Run",
+    "RUN_2":   "Sewers Boss",
 
     "ZONA3_1": "Caves 1",
     "ZONA3_2": "Caves 2",
     "ZONA3_3": "Caves 3",
-    "RUN_3":   "Caves Run",
+    "RUN_3":   "Caves Boss",
 }
 
 def get_level_map_part_name(level_name: str):

@@ -25,12 +25,12 @@ MAP_ITEMS: List[DesveladoItemData] = [
     DesveladoItemData("Sewers 1 Map Part"),
     DesveladoItemData("Sewers 2 Map Part"),
     DesveladoItemData("Sewers 3 Map Part"),
-    DesveladoItemData("Sewers Run Map Part"),
+    DesveladoItemData("Sewers Boss Map Part"),
 
     DesveladoItemData("Caves 1 Map Part"),
     DesveladoItemData("Caves 2 Map Part"),
     DesveladoItemData("Caves 3 Map Part"),
-    DesveladoItemData("Caves Run Map Part"),
+    DesveladoItemData("Caves Boss Map Part"),
 ]
 
 UNLOCK_ITEMS: List[DesveladoItemData] = [
@@ -73,4 +73,4 @@ def create_all_items(world: DesveladoWorld):
     world.multiworld.itempool += itempool
 
 def get_item_by_name(world: DesveladoWorld, name: str) -> DesveladoItem:
-    return next(DesveladoItem(item.name, item.classification, i, world.player) for i, item in enumerate(ALL_ITEM_DATA) if item.name == name)
+    return next(DesveladoItem(item.name, item.classification, ITEM_NAME_TO_ID[item.name], world.player) for item in ALL_ITEM_DATA if item.name == name)
