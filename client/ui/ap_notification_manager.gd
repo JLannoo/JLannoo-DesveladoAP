@@ -16,3 +16,12 @@ func notify(text: String, counter: String = '') -> void:
 	add_child(n)
 	
 	n.show_message(text, counter)
+
+func notify_ap_item(item: NetworkItem, counter = ''):
+	if item.is_local():
+		notify("You found your %s" % item.get_name(), counter)
+	else:
+		notify("Received %s from %s" % [
+			item.get_name(), 
+			Archipelago.conn.get_player_name(item.src_player_id)
+		], counter)
