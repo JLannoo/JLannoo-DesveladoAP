@@ -1,6 +1,6 @@
 extends "res://Levels/Components/falling_platform.gd"
 
-@onready var unlockable: UnlockableComponent = UnlockableComponent.new("Progressive Map")
+@onready var unlockable: UnlockableComponent = UnlockableComponent.new("Falling Platform Unlock")
 
 func _ready():
 	add_child(unlockable)

@@ -1,6 +1,10 @@
 extends "res://Levels/Components/switch.gd"
 
-@onready var unlockable: UnlockableComponent = UnlockableComponent.new("Progressive Map")
+@onready var unlockable: UnlockableComponent = UnlockableComponent.new(
+	"Ghost Switch Unlock" 
+	if scene_file_path.ends_with("switch_ghost.tscn") 
+	else "Key Switch Unlock"
+)
 
 func _ready():
 	add_child(unlockable)
