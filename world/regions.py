@@ -15,17 +15,18 @@ if TYPE_CHECKING:
 LEVELS_DISPLAY_NAME = {
     "ZONA1_1": "Castle 1",
     "ZONA1_2": "Castle 2",
-    "RUN_1":   "Castle Boss",
 
     "ZONA2_1": "Sewers 1",
     "ZONA2_2": "Sewers 2",
     "ZONA2_3": "Sewers 3",
-    "RUN_2":   "Sewers Boss",
 
     "ZONA3_1": "Caves 1",
     "ZONA3_2": "Caves 2",
     "ZONA3_3": "Caves 3",
-    "RUN_3":   "Caves Boss",
+
+    "test_boss_level_L1_J": "Castle Boss",
+    "test_boss_level_L2_J": "Sewers Boss",
+    "test_boss_level_L3_J": "Caves Boss",
 }
 
 def get_level_map_part_name(level_name: str):
@@ -47,7 +48,13 @@ def get_region_display_name(
 ) -> str:
     level_name = level.name if isinstance(level, room_data.DesveladoLevelData) else level
     room_name = room.name if isinstance(room, room_data.DesveladoRoomData) else room
-    return f"{LEVELS_DISPLAY_NAME.get(level_name, level_name)} - {room_name}"
+
+    name = f"{LEVELS_DISPLAY_NAME.get(level_name, level_name)} - {room_name}"
+
+    if "boss" in level_name.lower():
+        name = name.split(" - ")[0]
+
+    return name
 
 def get_connection_display_name(conn: room_data.DesveladoRoomConnection, level: room_data.DesveladoLevelData):
     return f"{level.name} - {conn.source_room} to {conn.dest_room}"
@@ -57,8 +64,8 @@ def create_and_connect_regions(world: DesveladoWorld) -> None:
     data = room_data.load_room_data()
 
     create_all_regions_and_locations(world, data)
-    connect_regions(world, data)
     create_map_connections(world, data)
+    connect_regions(world, data)
     create_events(world)
 
 
@@ -113,6 +120,10 @@ def create_map_connections(world: DesveladoWorld, data: list[room_data.Desvelado
     level3_2_start = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME['ZONA3_2'], "Room_65"))
     level3_3_start = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME['ZONA3_3'], "Room_39"))
 
+    level1_boss = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME["test_boss_level_L1_J"], ""))
+    level2_boss = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME["test_boss_level_L2_J"], ""))
+    level3_boss = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME["test_boss_level_L3_J"], ""))
+
     map_region.connect(level1_1_start, f"Map to {level1_1_start.name}", HasAll(*get_required_map_parts_names(data, 'ZONA1_1')))
     map_region.connect(level1_2_start, f"Map to {level1_2_start.name}", HasAll(*get_required_map_parts_names(data, 'ZONA1_2')))
     map_region.connect(level2_1_start, f"Map to {level2_1_start.name}", HasAll(*get_required_map_parts_names(data, 'ZONA2_1')))
@@ -121,9 +132,13 @@ def create_map_connections(world: DesveladoWorld, data: list[room_data.Desvelado
     map_region.connect(level3_1_start, f"Map to {level3_1_start.name}", HasAll(*get_required_map_parts_names(data, 'ZONA3_1')))
     map_region.connect(level3_2_start, f"Map to {level3_2_start.name}", HasAll(*get_required_map_parts_names(data, 'ZONA3_2')))
     map_region.connect(level3_3_start, f"Map to {level3_3_start.name}", HasAll(*get_required_map_parts_names(data, 'ZONA3_3')))
+    
+    map_region.connect(level1_boss, f"Map to {level1_boss.name}", HasAll(*get_required_map_parts_names(data, "test_boss_level_L1_J")))
+    map_region.connect(level2_boss, f"Map to {level2_boss.name}", HasAll(*get_required_map_parts_names(data, "test_boss_level_L2_J")))
+    map_region.connect(level3_boss, f"Map to {level3_boss.name}", HasAll(*get_required_map_parts_names(data, "test_boss_level_L3_J")))
 
     world.multiworld.regions += [map_region]
 
 def create_events(world: DesveladoWorld):
-    final_region = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME['ZONA3_3'], "Room_56"))
+    final_region = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME['test_boss_level_L3_J'], ""))
     final_region.add_event("Victory", "Victory", location_type=locations.DesveladoLocation, item_type=items.DesveladoItem)
