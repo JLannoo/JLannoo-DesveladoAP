@@ -105,8 +105,11 @@ def connect_regions(world: DesveladoWorld, data: list[room_data.DesveladoLevelDa
                 logging.error(f"Could not find some of the regions for connection {conn}")
                 continue
 
-            source_region.connect(dest_region, get_connection_display_name(conn, level))
+            source_roomdata = next((room for room in level.rooms if room.name == conn.source_room), None)
 
+            required_items = [items.UNLOCK_ITEMS_MAP[i] for i in source_roomdata.mechanics] if source_roomdata else None
+
+            source_region.connect(dest_region, get_connection_display_name(conn, level), HasAll(*required_items) if required_items else None)
 
 def create_map_connections(world: DesveladoWorld, data: list[room_data.DesveladoLevelData]):
     map_region = Region("Map", world.player, world.multiworld)

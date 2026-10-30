@@ -41,9 +41,17 @@ UNLOCK_ITEMS: List[DesveladoItemData] = [
     DesveladoItemData("Chandeliers Unlock"),
 ]
 
+UNLOCK_ITEMS_MAP: dict[str, str] = {
+    "key_switch": "Key Switch Unlock",
+    "ghost_switch": "Ghost Switch Unlock",
+    "falling_platform": "Falling Platforms Unlock",
+    "ghost_wall": "Ghost Walls Unlock",
+    "chandelier": "Chandeliers Unlock",
+}
+
 BONNIE_ITEMS: List[DesveladoItemData] = [
     DesveladoItemData("Bonnie Bone", ItemClassification.filler)
-] * BONNIE_BONES_AMOUNT
+]
 
 FILLER: List[DesveladoItemData] = [
     DesveladoItemData("Nothing!", ItemClassification.filler)
