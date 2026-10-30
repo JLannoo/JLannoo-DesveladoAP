@@ -90,8 +90,8 @@ func _trigger_notification(text: String, count: String) -> void:
 	notification_manager.notify(text, count)
 
 func _on_player_died():
-	if Archipelago.is_ap_connected():
-		Archipelago.send_deathlink()
+	if Archipelago.is_ap_connected() and Archipelago.is_deathlink():
+		Archipelago.conn.send_deathlink()
 
 func _try_ap_connect():
 	Archipelago.ap_connect("localhost", "38281", "Desvelado")
