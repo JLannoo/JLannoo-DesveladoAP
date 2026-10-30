@@ -82,6 +82,7 @@ func _on_room_cleared(s: Room) -> void:
 		var current_stage = StageManager.current_stages_data.stages[StageManager.current_stage]
 		var data = Archipelago.conn.get_gamedata_for_player()
 
+		# Room index does not exist in-game. Work around with location name.
 		var location_name = "%s - %s - Room Cleared" % [LEVEL_DISPLAY_NAME[current_stage.name.to_upper()], s.name]
 
 		Archipelago.collect_location(data.get_loc_id(location_name))
@@ -134,7 +135,7 @@ func _handle_item_received(item: NetworkItem):
 func _handle_bone_received(item: NetworkItem):
 	var count = GameManager.count_collectables()
 	GameManager.add_collectable(count+1)
-	notification_manager.notify_ap_item(item, "%s/15" % (count + 1))
+	notification_manager.notify_ap_item(item, "%s / 15" % (count+1))
 
 func _handle_map_received(item: NetworkItem):
 	var zone_display_name = item.get_name().split(" Map Part")[0]
