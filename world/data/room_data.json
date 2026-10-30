@@ -2,6 +2,7 @@
   "levels": [
     {
       "id": 0,
+      "is_boss_level": false,
       "name": "ZONA1_1",
       "necessary_levels": [],
       "room_connections": [
@@ -494,13 +495,7 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "id": 2,
-              "name": "bonus_collectable_2",
-              "type": "bonus_collectable"
-            }
-          ],
+          "locations": [],
           "mechanics": [],
           "name": "Room_14"
         },
@@ -745,13 +740,7 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "id": 1,
-              "name": "bonus_collectable_1",
-              "type": "bonus_collectable"
-            }
-          ],
+          "locations": [],
           "mechanics": [],
           "name": "Room_33"
         },
@@ -761,13 +750,7 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "id": 5,
-              "name": "bonus_collectable_5",
-              "type": "bonus_collectable"
-            }
-          ],
+          "locations": [],
           "mechanics": [],
           "name": "Room_43"
         },
@@ -857,6 +840,7 @@
     },
     {
       "id": 1,
+      "is_boss_level": false,
       "name": "ZONA1_2",
       "necessary_levels": [
         0
@@ -1198,13 +1182,7 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "id": 3,
-              "name": "bonus_collectable_3",
-              "type": "bonus_collectable"
-            }
-          ],
+          "locations": [],
           "mechanics": [],
           "name": "Room_37"
         },
@@ -1296,13 +1274,7 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "id": 4,
-              "name": "bonus_collectable_4",
-              "type": "bonus_collectable"
-            }
-          ],
+          "locations": [],
           "mechanics": [],
           "name": "Room_42"
         },
@@ -1415,6 +1387,7 @@
     },
     {
       "id": 2,
+      "is_boss_level": false,
       "name": "ZONA2_1",
       "necessary_levels": [
         0
@@ -1638,13 +1611,7 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "id": 6,
-              "name": "bonus_collectable_6",
-              "type": "bonus_collectable"
-            }
-          ],
+          "locations": [],
           "mechanics": [],
           "name": "Room_06"
         },
@@ -1860,6 +1827,7 @@
     },
     {
       "id": 3,
+      "is_boss_level": false,
       "name": "ZONA2_2",
       "necessary_levels": [
         2
@@ -2304,13 +2272,7 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "id": 8,
-              "name": "bonus_collectable_8",
-              "type": "bonus_collectable"
-            }
-          ],
+          "locations": [],
           "mechanics": [
             "ghost_switch"
           ],
@@ -2419,13 +2381,7 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "id": 7,
-              "name": "bonus_collectable_7",
-              "type": "bonus_collectable"
-            }
-          ],
+          "locations": [],
           "mechanics": [
             "key_switch"
           ],
@@ -2454,6 +2410,7 @@
     },
     {
       "id": 4,
+      "is_boss_level": false,
       "name": "ZONA2_3",
       "necessary_levels": [
         3,
@@ -2821,13 +2778,7 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "id": 10,
-              "name": "bonus_collectable_10",
-              "type": "bonus_collectable"
-            }
-          ],
+          "locations": [],
           "mechanics": [
             "ghost_switch",
             "key_switch"
@@ -2906,13 +2857,7 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "id": 9,
-              "name": "bonus_collectable_9",
-              "type": "bonus_collectable"
-            }
-          ],
+          "locations": [],
           "mechanics": [
             "key_switch"
           ],
@@ -2991,6 +2936,7 @@
     },
     {
       "id": 5,
+      "is_boss_level": false,
       "name": "ZONA3_1",
       "necessary_levels": [
         2
@@ -3550,13 +3496,7 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "id": 11,
-              "name": "bonus_collectable_11",
-              "type": "bonus_collectable"
-            }
-          ],
+          "locations": [],
           "mechanics": [
             "chandelier",
             "falling_platform"
@@ -3745,6 +3685,7 @@
     },
     {
       "id": 6,
+      "is_boss_level": false,
       "name": "ZONA3_2",
       "necessary_levels": [
         5
@@ -4131,13 +4072,7 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "id": 13,
-              "name": "bonus_collectable_13",
-              "type": "bonus_collectable"
-            }
-          ],
+          "locations": [],
           "mechanics": [
             "chandelier",
             "falling_platform",
@@ -4267,13 +4202,7 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "id": 12,
-              "name": "bonus_collectable_12",
-              "type": "bonus_collectable"
-            }
-          ],
+          "locations": [],
           "mechanics": [
             "chandelier",
             "falling_platform",
@@ -4383,6 +4312,7 @@
     },
     {
       "id": 7,
+      "is_boss_level": false,
       "name": "ZONA3_3",
       "necessary_levels": [
         6,
@@ -4731,13 +4661,7 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "id": 14,
-              "name": "bonus_collectable_14",
-              "type": "bonus_collectable"
-            }
-          ],
+          "locations": [],
           "mechanics": [
             "chandelier",
             "falling_platform",
@@ -4842,13 +4766,7 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "id": 15,
-              "name": "bonus_collectable_15",
-              "type": "bonus_collectable"
-            }
-          ],
+          "locations": [],
           "mechanics": [
             "ghost_wall",
             "key_switch"
@@ -4878,6 +4796,125 @@
             "key_switch"
           ],
           "name": "Room_59"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "is_boss_level": true,
+      "name": "test_boss_level_L1_J",
+      "necessary_levels": [
+        1
+      ],
+      "room_connections": [
+        {
+          "dest_room": "Room",
+          "source_room": "Room",
+          "type": "door"
+        }
+      ],
+      "rooms": [
+        {
+          "exits": [
+            {
+              "dest_room": "Room",
+              "start_open": true,
+              "type": "door"
+            }
+          ],
+          "index": 0,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            },
+            {
+              "name": "map_part",
+              "type": "map_part"
+            }
+          ],
+          "mechanics": [],
+          "name": "Room"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "is_boss_level": true,
+      "name": "test_boss_level_L2_J",
+      "necessary_levels": [
+        4,
+        8
+      ],
+      "room_connections": [
+        {
+          "dest_room": "Room",
+          "source_room": "Room",
+          "type": "door"
+        }
+      ],
+      "rooms": [
+        {
+          "exits": [
+            {
+              "dest_room": "Room",
+              "start_open": true,
+              "type": "door"
+            }
+          ],
+          "index": 0,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            },
+            {
+              "name": "map_part",
+              "type": "map_part"
+            }
+          ],
+          "mechanics": [
+            "ghost_switch",
+            "key_switch"
+          ],
+          "name": "Room"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "is_boss_level": true,
+      "name": "test_boss_level_L3_J",
+      "necessary_levels": [
+        7,
+        9
+      ],
+      "room_connections": [],
+      "rooms": [
+        {
+          "exits": [],
+          "index": 0,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [
+            {
+              "name": "clear",
+              "type": "room_clear"
+            }
+          ],
+          "mechanics": [
+            "chandelier",
+            "ghost_switch",
+            "key_switch"
+          ],
+          "name": "Room"
         }
       ]
     }

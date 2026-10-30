@@ -30,6 +30,7 @@
 extends SceneTree
 
 const LEVELS = ["ZONA1_1", "ZONA1_2", "ZONA2_1", "ZONA2_2", "ZONA2_3", "ZONA3_1", "ZONA3_2", "ZONA3_3"]
+const BOSS_LEVELS = ["test_boss_level_L1_J", "test_boss_level_L2_J", "test_boss_level_L3_J"]
 
 # Instanced scene path -> mechanic. Checked before scripts, since some
 # scenes share a script (switch.tscn and switch_ghost.tscn both use switch.gd)
@@ -88,6 +89,11 @@ func _initialize() -> void:
 
     for level_name in LEVELS:
         var scene = load("res://Levels/MapZones/%s.tscn" % level_name).instantiate()
+        levels.append(extract_level(level_name, scene))
+        scene.free()
+
+    for level_name in BOSS_LEVELS:
+        var scene = load("res://Levels/BossLevels/%s.tscn" % level_name).instantiate()
         levels.append(extract_level(level_name, scene))
         scene.free()
 
@@ -157,7 +163,8 @@ func extract_level(level_name: String, scene: Node) -> Dictionary:
         "name": level_name,
         "rooms": rooms,
         "room_connections": room_connections,
-        "necessary_levels": necessary_zones
+        "necessary_levels": necessary_zones,
+        "is_boss_level": level_name in BOSS_LEVELS,
     }
 
 

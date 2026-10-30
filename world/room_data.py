@@ -40,6 +40,7 @@ class DesveladoLevelData:
     necessary_levels: list[int]
     room_connections: list[DesveladoRoomConnection]
     rooms: list[DesveladoRoomData]
+    is_boss_level: bool
 
 def load_room_data() -> list[DesveladoLevelData]:
     try:
@@ -61,7 +62,7 @@ def load_room_data() -> list[DesveladoLevelData]:
 
                 rooms.append(DesveladoRoomData(room["index"], room["name"], room["is_bonus"], room["is_branch"], room["is_zone_end"], room["mechanics"], exits, locations))
 
-            levels.append(DesveladoLevelData(level["id"], level["name"], level["necessary_levels"], room_connections, rooms))
+            levels.append(DesveladoLevelData(level["id"], level["name"], level["necessary_levels"], room_connections, rooms, level["is_boss_level"]))
 
         return levels
             
