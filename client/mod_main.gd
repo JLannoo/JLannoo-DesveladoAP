@@ -29,6 +29,8 @@ const LEVEL_DISPLAY_NAME: Dictionary = {
 @export var AP_NOTIFICATION_MANAGER = preload("res://mods-unpacked/JLannoo-DesveladoAP/ui/ap_notification_manager.gd")
 var notification_manager: CanvasLayer
 
+const BONUS_COLLECTABLE_EXT = preload("res://mods-unpacked/JLannoo-DesveladoAP/extensions/Levels/Components/bonus_collectable.gd")
+
 var first_map_found: bool = false
 
 func _init() -> void:
@@ -40,10 +42,10 @@ func install_script_extensions() -> void:
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Menus/main_menu_v2.gd"))
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Menus/pause_menu.gd"))
 
-	# ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/bonus_collectable.gd"))
+	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/bonus_collectable.gd"))
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/collectable_notification.gd"))
 
-	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Engine/game_manager.gd"))
+	# ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Engine/game_manager.gd"))
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Engine/stage_manager.gd"))
 	
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/switch.gd"))
@@ -71,6 +73,16 @@ func _on_node_added(node: Node) -> void:
 	# Hook into room adding for catching all room IDs
 	if node is Room:
 		node.room_cleared.connect(_on_room_cleared.bind(node))
+
+	# bonus_collectable are preloaded by StageManager and preload.tscn
+	# so they are loaded before the extension is applied. 
+	# We replace them manually.
+	if node.scene_file_path.contains("bonus_collectable") and node.get_script() != BONUS_COLLECTABLE_EXT:
+		# Replacing the script discards exported vars
+		if "id" in node:
+			var id = node.id
+			node.set_script(BONUS_COLLECTABLE_EXT)
+			node.id = id
 
 	if node is Player and not player:
 		player = node
