@@ -123,6 +123,7 @@ func _on_close_console():
 
 func _on_ap_connected(_conn: ConnectionInfo, _json: Dictionary):
 	Archipelago.conn.obtained_item.connect(_on_item_receive)
+	Archipelago.conn.force_scout_all()
 
 func _on_item_receive(item: NetworkItem):
 	_handle_item_received(item)
