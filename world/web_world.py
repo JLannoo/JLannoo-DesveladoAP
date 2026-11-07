@@ -1,6 +1,8 @@
 from BaseClasses import Tutorial
 from worlds.AutoWorld import WebWorld
 
+from . import options
+
 class DesveladoWebWorld(WebWorld):
     game = "Desvelado"
 
@@ -16,3 +18,5 @@ class DesveladoWebWorld(WebWorld):
     )
 
     tutorials = [setup_en]
+
+    option_groups = options.desvelado_option_groups
