@@ -13,4 +13,7 @@ def set_all_rules(world: DesveladoWorld) -> None:
 
 
 def set_completion_condition(world: DesveladoWorld) -> None:
-    world.set_completion_rule(Has("Victory"))
+    if world.options.goal == desvelado_options.Goal.option_bonnie:
+        world.set_completion_rule(Has("Victory") & Has("Bonnie Bone", items.BONNIE_BONES_AMOUNT))
+    else:
+        world.set_completion_rule(Has("Victory"))

@@ -79,7 +79,12 @@ BASE_ITEM_DATA: List[DesveladoItemData] = MAP_ITEMS + UNLOCK_ITEMS
 ALL_ITEM_DATA: List[DesveladoItemData]  = MAP_ITEMS + UNLOCK_ITEMS + BONNIE_ITEMS + FILLER
 
 def create_random_filler_item(world: DesveladoWorld):
-    return DesveladoItemData("Nothing!", ItemClassification.filler)
+
+def get_item_classification(world: DesveladoWorld, item: DesveladoItemData) -> ItemClassification:
+    if item.name == "Bonnie Bone" and world.options.goal == desvelado_options.Goal.option_bonnie:
+        return ItemClassification.progression_skip_balancing
+
+    return item.classification
 
 def create_all_items(world: DesveladoWorld):
     # Base items
