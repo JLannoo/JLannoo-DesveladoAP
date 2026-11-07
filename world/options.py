@@ -26,15 +26,80 @@ class DeathlinkAmnesty(Range):
     range_end = 20
     default = 5
 
-class TestToggle(Toggle):
-    """This is a test toggle"""
-    auto_display_name="Test toggle"
+class Traps(Toggle):
+    """Enables Traps for this world. If enabled, some items will be traps that will hinder the player in some way."""
+    display_name="Traps"
+    default = True
 
+class TrapFillerPercentage(Range):
+    """Sets the percentage of traps in the filler item pool. Only applies if Traps are enabled."""
+    range_start = 0
+    range_end = 100
+    default = 10
+    display_name="Trap Filler Percentage"
+
+class TrapBaseWeight(Choice):
+    """Sets the base weight of traps in the item pool. Only applies if Traps are enabled."""
+    display_name="Trap Base Weight"
+    option_none = 0
+    option_low = 1
+    option_medium = 2
+    option_high = 3
+    default = 2
+
+class TrapDeathWeight(TrapBaseWeight):
+    """
+    Sets the weight of Death Traps in the item pool.
+
+    Death Traps kill the player instantly.
+    """
+    display_name="Death Trap weight"
+
+class TrapIceWeight(TrapBaseWeight):
+    """
+    Sets the weight of Ice Traps in the item pool.
+
+    Ice Traps freeze the player in place.
+    """
+    display_name="Ice Trap weight"
+
+class TrapFlipWeight(TrapBaseWeight):
+    """
+    Sets the weight of Flip Traps in the item pool.
+
+    Flip Traps reverse the player's controls.
+    """
+    display_name="Flip Trap weight"
+
+class TrapBlindWeight(TrapBaseWeight):
+    """
+    Sets the weight of Blind Traps in the item pool.
+
+    Blind Traps prevent the player from seeing the screen.
+    """
+    display_name="Blind Trap weight"
+
+class TrapRelightWeight(TrapBaseWeight):
+    """
+    Sets the weight of Relight Traps in the item pool.
+
+    Relight Traps light already turned off lamps.
+    """
+    display_name="Relight Trap weight"
+
+class TrapConfusionWeight(TrapBaseWeight):
+    """
+    Sets the weight of Confusion Traps in the item pool.
+
+    Confusion Traps mix up the player's controls.
+    """
+    display_name="Confusion Trap weight"
 
 
 desvelado_option_groups = [
     OptionGroup("Goal", [Goal]),
     OptionGroup("Deathlink", [Deathlink, DeathlinkAmnesty]),
+    OptionGroup("Traps", [Traps, TrapFillerPercentage, TrapDeathWeight, TrapIceWeight, TrapFlipWeight, TrapBlindWeight, TrapRelightWeight, TrapConfusionWeight]),
 ]
 
 @dataclass
@@ -43,5 +108,12 @@ class DesveladoOptions(PerGameCommonOptions):
     
     deathlink: Deathlink
     deathlink_amnesty: DeathlinkAmnesty
-    toggle: TestToggle
-    range: TestRange
+
+    traps: Traps
+    trap_filler_percentage: TrapFillerPercentage
+    trap_death_weight: TrapDeathWeight
+    trap_ice_weight: TrapIceWeight
+    trap_flip_weight: TrapFlipWeight
+    trap_blind_weight: TrapBlindWeight
+    trap_relight_weight: TrapRelightWeight
+    trap_confusion_weight: TrapConfusionWeight

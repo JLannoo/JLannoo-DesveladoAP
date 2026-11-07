@@ -5,11 +5,12 @@ from typing import TYPE_CHECKING, Final, List, NamedTuple
 
 from BaseClasses import Item, ItemClassification
 
+from . import options as desvelado_options
+
 if TYPE_CHECKING:
     from .world import DesveladoWorld
 
 BONNIE_BONES_AMOUNT: Final[int] = 15
-MAP_PART_AMOUNT: Final[int] = 8
 
 class DesveladoItem(Item):
     game = "Desvelado"
@@ -25,12 +26,14 @@ class ItemType(IntEnum):
     unlock = auto()
     collectable = auto()
     filler = auto()
+    trap = auto()
 
 ITEM_TYPE_OFFSET_TABLE: dict[ItemType, int] = {
     ItemType.map_part:      1,
     ItemType.unlock:        100,
     ItemType.collectable:   200,
     ItemType.filler:        300,
+    ItemType.trap:          400,
 }
 
 MAP_ITEMS: List[DesveladoItemData] = [
@@ -74,11 +77,42 @@ FILLER: List[DesveladoItemData] = [
     DesveladoItemData("Nothing!", ItemType.filler, 0, ItemClassification.filler)
 ]
 
+TRAPS: List[DesveladoItemData] = [
+    DesveladoItemData("Death Trap",     ItemType.trap, 0, ItemClassification.trap), # Kills the player
+    DesveladoItemData("Ice Trap",       ItemType.trap, 1, ItemClassification.trap), # Freezes the player in place for a few seconds
+    DesveladoItemData("Flip Trap",      ItemType.trap, 2, ItemClassification.trap), # Flips the game upside down for a few seconds
+    DesveladoItemData("Blind Trap",     ItemType.trap, 3, ItemClassification.trap), # Blinds the player for a few seconds
+    DesveladoItemData("Relight Trap",   ItemType.trap, 5, ItemClassification.trap), # Relights all the torches in the room
+    DesveladoItemData("Confusion Trap", ItemType.trap, 4, ItemClassification.trap), # Reverses the player's controls for a few seconds
+]
 
 BASE_ITEM_DATA: List[DesveladoItemData] = MAP_ITEMS + UNLOCK_ITEMS
 ALL_ITEM_DATA: List[DesveladoItemData]  = MAP_ITEMS + UNLOCK_ITEMS + BONNIE_ITEMS + FILLER
 
 def create_random_filler_item(world: DesveladoWorld):
+    # If traps enabled, create them with corresponding chance and weights.
+    if world.options.traps.value:
+        trap_chance = world.options.trap_filler_percentage.value
+
+        if world.multiworld.random.randint(1, 100) <= trap_chance:
+            trap_weights = {
+                "Death Trap": world.options.trap_death_weight.value,
+                "Ice Trap": world.options.trap_ice_weight.value,
+                "Flip Trap": world.options.trap_flip_weight.value,
+                "Blind Trap": world.options.trap_blind_weight.value,
+                "Relight Trap": world.options.trap_relight_weight.value,
+                "Confusion Trap": world.options.trap_confusion_weight.value,
+            }
+
+            traps = []
+            for trap_name, weight in trap_weights.items():
+                traps.extend([trap_name] * weight)
+
+            if traps:
+                trap_name = world.multiworld.random.choice(traps)
+                return world.create_item(trap_name)
+
+    return world.create_item("Nothing!")
 
 def get_item_classification(world: DesveladoWorld, item: DesveladoItemData) -> ItemClassification:
     if item.name == "Bonnie Bone" and world.options.goal == desvelado_options.Goal.option_bonnie:
@@ -109,6 +143,7 @@ def create_all_items(world: DesveladoWorld):
 ## Unlocks:       100 + id
 ## Collectables:  200 + id
 ## Filler:        300 + id
+## Traps:         400 + id
 def generate_item_table() -> dict[str, int]:
     table = {}
 
