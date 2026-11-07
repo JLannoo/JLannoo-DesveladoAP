@@ -64,6 +64,7 @@ func _ready() -> void:
 	add_child(notification_manager)
 	
 	Console.add_command("notification", _trigger_notification, 2)
+	Console.add_command("level_room", _move_to_level_room, 2)
 
 	ModLoaderLog.info("Ready!", LOG_NAME)
 
@@ -115,6 +116,17 @@ func _on_room_cleared(s: Room) -> void:
 
 func _trigger_notification(text: String, count: String) -> void:
 	notification_manager.notify(text, count)
+
+func _move_to_level_room(level_id: String, room_id: String) -> void:
+	Console.print_line("Moving to level %s" % [level_id])
+	StageManager.go_to_stage(int(level_id))
+
+	await get_tree().create_timer(1).timeout
+
+	var level = get_node("/root/Level")
+	level.console_move_to(room_id)
+	Console.print_line("Moving to room %s" % [room_id])
+	
 
 func _on_player_died():
 	if Archipelago.is_ap_connected() and Archipelago.is_deathlink():
