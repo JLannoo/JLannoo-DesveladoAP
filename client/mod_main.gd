@@ -108,6 +108,8 @@ func _on_room_cleared(s: Room) -> void:
 
 		# Room index does not exist in-game. Work around with location name.
 		var location_name = "%s - %s - Room Cleared" % [LEVEL_DISPLAY_NAME[current_stage.name.to_upper()], s.name]
+		if current_stage.name.to_upper().contains("RUN"):
+			location_name = "%s - Room Cleared" % [LEVEL_DISPLAY_NAME[current_stage.name.to_upper()]]
 
 		Archipelago.collect_location(data.get_loc_id(location_name))
 
