@@ -30,6 +30,7 @@ const LEVEL_DISPLAY_NAME: Dictionary = {
 var notification_manager: CanvasLayer
 
 const BONUS_COLLECTABLE_EXT = preload("res://mods-unpacked/JLannoo-DesveladoAP/extensions/Levels/Components/bonus_collectable.gd")
+const PLAYER_EXT = preload("res://mods-unpacked/JLannoo-DesveladoAP/extensions/Player/player.gd")
 
 var first_map_found: bool = false
 
@@ -48,9 +49,12 @@ func install_script_extensions() -> void:
 	# ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Engine/game_manager.gd"))
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Engine/stage_manager.gd"))
 	
-	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/switch.gd"))
+	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/switch.gd")) # Cover both the key_switch and ghost_switch
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/falling_platform.gd"))
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/lamp_chandelier.gd"))
+	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/ghost_wall.gd"))
+	
+	# ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Player/player.gd"))
 
 func _ready() -> void:
 	var tree = get_tree()
@@ -83,6 +87,14 @@ func _on_node_added(node: Node) -> void:
 			var id = node.id
 			node.set_script(BONUS_COLLECTABLE_EXT)
 			node.id = id
+
+	# Player has `class_name Player`; install_script_extension breaks it on Godot 4.2
+	# ("hides a global script class").
+	# We replace it manually.
+
+	# Player has no exports and isn't _ready yet, so swapping the script here is safe.
+	if node is Player and node.get_script() != PLAYER_EXT:
+		node.set_script(PLAYER_EXT)
 
 	if node is Player and not player:
 		player = node
