@@ -87,7 +87,7 @@ TRAPS: List[DesveladoItemData] = [
 ]
 
 BASE_ITEM_DATA: List[DesveladoItemData] = MAP_ITEMS + UNLOCK_ITEMS
-ALL_ITEM_DATA: List[DesveladoItemData]  = MAP_ITEMS + UNLOCK_ITEMS + BONNIE_ITEMS + FILLER
+ALL_ITEM_DATA: List[DesveladoItemData]  = MAP_ITEMS + UNLOCK_ITEMS + BONNIE_ITEMS + FILLER + TRAPS
 
 def create_random_filler_item(world: DesveladoWorld):
     # If traps enabled, create them with corresponding chance and weights.
