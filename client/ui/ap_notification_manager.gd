@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const NOTIFICATION_SCENE = "res://Levels/Components/collectable_notification.tscn"
+const NOTIFICATION_SCENE = "res://mods-unpacked/JLannoo-DesveladoAP/ui/collectable_notification.tscn"
 const AP_NOTIFICATION_SCRIPT = preload("res://mods-unpacked/JLannoo-DesveladoAP/ui/ap_notification.gd")
 
 var queue: Array[Notification] = []
@@ -16,6 +16,7 @@ class Notification:
 
 func _ready() -> void:
 	layer = 100
+	name = "NotificationManager"
 
 	enqueued.connect(_on_enqueued)
 	released.connect(_on_released)
@@ -39,14 +40,19 @@ func notify(text: String, counter: String = '') -> void:
 	enqueued.emit()
 
 func notify_ap_item(item: NetworkItem, counter = ''):
+	var color = Color.MAGENTA if item.is_prog() else Color.YELLOW
+
 	if item.is_local():
-		notify("You found your %s" % item.get_name(), counter)
+		notify("You found your %s" % wrap_text_with_color(item.get_name(), color), counter)
 	else:
 		notify("Received %s from %s" % [
-			item.get_name(), 
+			wrap_text_with_color(item.get_name(), color),
 			Archipelago.conn.get_player_name(item.src_player_id)
 		], counter)
 
+func wrap_text_with_color(text: String, color: Color) -> String:
+	var hex_color = color.to_html()
+	return "[color=%s]%s[/color]" % [hex_color, text]
 
 func _show_first():
 	var n = queue.pop_front()

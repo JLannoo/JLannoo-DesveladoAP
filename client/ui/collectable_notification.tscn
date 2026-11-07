@@ -1,0 +1,183 @@
+[gd_scene load_steps=12 format=3 uid="uid://chs3xvux2k04c"]
+
+[ext_resource type="Script" path="res://Levels/Components/collectable_notification.gd" id="1_pgbyn"]
+[ext_resource type="Theme" uid="uid://b2ht02t7cbnw0" path="res://Resources/Themes/menu_theme.tres" id="2_p2y65"]
+[ext_resource type="Texture2D" uid="uid://bvf0i8ye8ek2e" path="res://Art/Levels/Assets/notification-holder.png" id="3_8yidk"]
+[ext_resource type="Texture2D" uid="uid://bk3x27octllm0" path="res://Art/Sprites/Collectables/collectable_skull.png" id="4_ireb5"]
+[ext_resource type="Texture2D" uid="uid://bufkqm6ecr66l" path="res://Art/Sprites/Collectables/collectable_bone.png" id="5_b1st6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vr40"]
+content_margin_left = 200.0
+content_margin_right = 214.0
+texture = ExtResource("3_8yidk")
+texture_margin_left = 128.0
+texture_margin_top = 128.0
+texture_margin_right = 128.0
+texture_margin_bottom = 128.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_us8jc"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.396078, 0.396078, 0.576471, 1)
+corner_radius_top_left = 38
+corner_radius_top_right = 38
+corner_radius_bottom_right = 38
+corner_radius_bottom_left = 38
+corner_detail = 12
+anti_aliasing_size = 2.0
+
+[sub_resource type="Animation" id="Animation_8hcoc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wi33v"]
+resource_name = "hide"
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.14355, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -144)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cf3ts"]
+resource_name = "show"
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, -288), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lo01m"]
+_data = {
+"RESET": SubResource("Animation_8hcoc"),
+"hide": SubResource("Animation_wi33v"),
+"show": SubResource("Animation_cf3ts")
+}
+
+[node name="Notification" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pgbyn")
+
+[node name="Notification" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 0
+offset_right = 629.0
+offset_bottom = 290.0
+theme = ExtResource("2_p2y65")
+theme_override_colors/default_color = Color(0.937255, 0.866667, 0.560784, 1)
+theme_override_font_sizes/normal_font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxTexture_7vr40")
+bbcode_enabled = true
+text = "
+"
+fit_content = true
+autowrap_mode = 0
+shortcut_keys_enabled = false
+
+[node name="Icon" type="Node2D" parent="Notification"]
+position = Vector2(144, 144)
+scale = Vector2(0.75, 0.75)
+
+[node name="Skull" type="Sprite2D" parent="Notification/Icon"]
+texture = ExtResource("4_ireb5")
+
+[node name="Bone" type="Sprite2D" parent="Notification/Icon"]
+visible = false
+texture = ExtResource("5_b1st6")
+
+[node name="Counter" type="Label" parent="Notification"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -41.0
+offset_right = -107.0
+offset_bottom = 39.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_p2y65")
+theme_override_colors/font_color = Color(0.894118, 0.894118, 0.894118, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_us8jc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Notification")
+libraries = {
+"": SubResource("AnimationLibrary_lo01m")
+}
+autoplay = "RESET"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
