@@ -2,7 +2,6 @@ from collections.abc import Mapping
 from typing import Any
 
 from worlds.AutoWorld import World
-from worlds.celeste_open_world.Locations import generate_location_table
 
 from . import items, locations, regions, rules, web_world
 from . import options as desvelado_options 
@@ -16,7 +15,10 @@ class DesveladoWorld(World):
     options: desvelado_options.DesveladoOptions
 
     location_name_to_id = locations.LOCATIONS_TO_ID
+    location_name_groups = locations.generate_location_name_groups()
+
     item_name_to_id = items.ITEM_NAME_TO_ID
+    item_name_groups = items.generate_item_name_groups()
 
     origin_region_name = "Map"
 

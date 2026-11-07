@@ -53,3 +53,28 @@ def generate_location_table() -> dict[str, int]:
     return location_table
 
 LOCATIONS_TO_ID = generate_location_table()    
+
+def generate_location_name_groups() -> dict[str, set[str]]:
+    groups = {
+        "Map Parts": set(),
+        "Room Clears": set(),
+        "Bones": set(),
+    }
+
+    data = room_data.load_room_data()
+
+    for level in data:
+        for room in level.rooms:
+            region_name = regions.get_region_display_name(level, room)
+
+            for location in room.locations:
+                loc_name = f"{region_name} - {LOCATION_TYPE_DISPLAY_NAME[location.type]}"
+
+                if location.type == LocationType.map:
+                    groups["Map Parts"].add(loc_name)
+                elif location.type == LocationType.clear:
+                    groups["Room Clears"].add(loc_name)
+                elif location.type == LocationType.bonus:
+                    groups["Bones"].add(loc_name)
+
+    return groups
