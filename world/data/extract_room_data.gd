@@ -50,6 +50,12 @@ const LOCATION_SCRIPTS = {
     "res://Levels/Components/map_part.gd": "map_part",
 }
 
+# Fallback in case the script is not correctly reported.
+const LOCATION_SCENES = {
+    "res://Levels/Components/bonus_collectable.tscn": "bonus_collectable",
+    "res://Levels/Components/map_part.tscn": "map_part",
+}
+
 const DOOR_SCRIPT = "res://Levels/Components/door.gd"
 const BONUS_DOOR_SCRIPT = "res://Levels/Components/bonus_door.gd"
 const NEXT_ZONE_DOOR_SCRIPT = "res://Levels/Components/next_zone_door.gd"
@@ -194,8 +200,11 @@ func extract_room(room: Node, index: int, index_to_name: Dictionary) -> Dictiona
         elif MECHANIC_SCRIPTS.has(script):
             append_unique(mechanics, MECHANIC_SCRIPTS[script])
 
-        elif LOCATION_SCRIPTS.has(script):
-            var location = {"name": LOCATION_SCRIPTS[script], "type": LOCATION_SCRIPTS[script]}
+        elif LOCATION_SCRIPTS.has(script) or LOCATION_SCENES.has(scene_path):
+            var location = {
+                "type": LOCATION_SCRIPTS.get(script, LOCATION_SCENES.get(scene_path)),
+                "name": LOCATION_SCRIPTS.get(script, LOCATION_SCENES.get(scene_path)),
+            }
 
             # Only bones have an id
             if "id" in node:

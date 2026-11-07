@@ -495,7 +495,13 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [],
+          "locations": [
+            {
+              "id": 2,
+              "name": "bonus_collectable_2",
+              "type": "bonus_collectable"
+            }
+          ],
           "mechanics": [],
           "name": "Room_14"
         },
@@ -740,7 +746,13 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [],
+          "locations": [
+            {
+              "id": 1,
+              "name": "bonus_collectable_1",
+              "type": "bonus_collectable"
+            }
+          ],
           "mechanics": [],
           "name": "Room_33"
         },
@@ -750,7 +762,13 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [],
+          "locations": [
+            {
+              "id": 5,
+              "name": "bonus_collectable_5",
+              "type": "bonus_collectable"
+            }
+          ],
           "mechanics": [],
           "name": "Room_43"
         },
@@ -1182,7 +1200,13 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [],
+          "locations": [
+            {
+              "id": 3,
+              "name": "bonus_collectable_3",
+              "type": "bonus_collectable"
+            }
+          ],
           "mechanics": [],
           "name": "Room_37"
         },
@@ -1274,7 +1298,13 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [],
+          "locations": [
+            {
+              "id": 4,
+              "name": "bonus_collectable_4",
+              "type": "bonus_collectable"
+            }
+          ],
           "mechanics": [],
           "name": "Room_42"
         },
@@ -1611,7 +1641,13 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [],
+          "locations": [
+            {
+              "id": 6,
+              "name": "bonus_collectable_6",
+              "type": "bonus_collectable"
+            }
+          ],
           "mechanics": [],
           "name": "Room_06"
         },
@@ -2272,7 +2308,13 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [],
+          "locations": [
+            {
+              "id": 8,
+              "name": "bonus_collectable_8",
+              "type": "bonus_collectable"
+            }
+          ],
           "mechanics": [
             "ghost_switch"
           ],
@@ -2381,7 +2423,13 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [],
+          "locations": [
+            {
+              "id": 7,
+              "name": "bonus_collectable_7",
+              "type": "bonus_collectable"
+            }
+          ],
           "mechanics": [
             "key_switch"
           ],
@@ -2778,7 +2826,13 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [],
+          "locations": [
+            {
+              "id": 10,
+              "name": "bonus_collectable_10",
+              "type": "bonus_collectable"
+            }
+          ],
           "mechanics": [
             "ghost_switch",
             "key_switch"
@@ -2857,7 +2911,13 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [],
+          "locations": [
+            {
+              "id": 9,
+              "name": "bonus_collectable_9",
+              "type": "bonus_collectable"
+            }
+          ],
           "mechanics": [
             "key_switch"
           ],
@@ -3496,7 +3556,13 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [],
+          "locations": [
+            {
+              "id": 11,
+              "name": "bonus_collectable_11",
+              "type": "bonus_collectable"
+            }
+          ],
           "mechanics": [
             "chandelier",
             "falling_platform"
@@ -4072,7 +4138,13 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [],
+          "locations": [
+            {
+              "id": 13,
+              "name": "bonus_collectable_13",
+              "type": "bonus_collectable"
+            }
+          ],
           "mechanics": [
             "chandelier",
             "falling_platform",
@@ -4202,7 +4274,13 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [],
+          "locations": [
+            {
+              "id": 12,
+              "name": "bonus_collectable_12",
+              "type": "bonus_collectable"
+            }
+          ],
           "mechanics": [
             "chandelier",
             "falling_platform",
@@ -4661,7 +4739,13 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [],
+          "locations": [
+            {
+              "id": 14,
+              "name": "bonus_collectable_14",
+              "type": "bonus_collectable"
+            }
+          ],
           "mechanics": [
             "chandelier",
             "falling_platform",
@@ -4766,7 +4850,13 @@
           "is_bonus": true,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [],
+          "locations": [
+            {
+              "id": 15,
+              "name": "bonus_collectable_15",
+              "type": "bonus_collectable"
+            }
+          ],
           "mechanics": [
             "ghost_wall",
             "key_switch"
