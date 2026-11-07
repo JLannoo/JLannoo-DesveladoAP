@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from enum import IntEnum, auto
 from typing import TYPE_CHECKING, Final, List, NamedTuple
 
 from BaseClasses import Item, ItemClassification
@@ -15,30 +16,46 @@ class DesveladoItem(Item):
 
 class DesveladoItemData(NamedTuple):
     name: str
+    type: ItemType
+    id_in_type: int
     classification: ItemClassification = ItemClassification.progression
 
+class ItemType(IntEnum):
+    map_part = auto()
+    unlock = auto()
+    collectable = auto()
+    filler = auto()
+
+ITEM_TYPE_OFFSET_TABLE: dict[ItemType, int] = {
+    ItemType.map_part:      1,
+    ItemType.unlock:        100,
+    ItemType.collectable:   200,
+    ItemType.filler:        300,
+}
+
 MAP_ITEMS: List[DesveladoItemData] = [
-    DesveladoItemData("Castle 1 Map Part"),
-    DesveladoItemData("Castle 2 Map Part"),
-    DesveladoItemData("Castle Boss Map Part"),
+    DesveladoItemData("Castle 1 Map Part", ItemType.map_part, 0),
+    DesveladoItemData("Castle 2 Map Part", ItemType.map_part, 1),
 
-    DesveladoItemData("Sewers 1 Map Part"),
-    DesveladoItemData("Sewers 2 Map Part"),
-    DesveladoItemData("Sewers 3 Map Part"),
-    DesveladoItemData("Sewers Boss Map Part"),
+    DesveladoItemData("Sewers 1 Map Part", ItemType.map_part, 2),
+    DesveladoItemData("Sewers 2 Map Part", ItemType.map_part, 3),
+    DesveladoItemData("Sewers 3 Map Part", ItemType.map_part, 4),
 
-    DesveladoItemData("Caves 1 Map Part"),
-    DesveladoItemData("Caves 2 Map Part"),
-    DesveladoItemData("Caves 3 Map Part"),
-    DesveladoItemData("Caves Boss Map Part"),
+    DesveladoItemData("Caves 1 Map Part", ItemType.map_part, 5),
+    DesveladoItemData("Caves 2 Map Part", ItemType.map_part, 6),
+    DesveladoItemData("Caves 3 Map Part", ItemType.map_part, 7),
+
+    DesveladoItemData("Sewers Boss Map Part", ItemType.map_part, 8),
+    DesveladoItemData("Castle Boss Map Part", ItemType.map_part, 9),
+    DesveladoItemData("Caves Boss Map Part", ItemType.map_part, 10),
 ]
 
 UNLOCK_ITEMS: List[DesveladoItemData] = [
-    DesveladoItemData("Key Switch Unlock"),
-    DesveladoItemData("Ghost Switch Unlock"),
-    DesveladoItemData("Falling Platforms Unlock"),
-    DesveladoItemData("Ghost Walls Unlock"),
-    DesveladoItemData("Chandeliers Unlock"),
+    DesveladoItemData("Key Switch Unlock", ItemType.unlock, 0),
+    DesveladoItemData("Ghost Switch Unlock", ItemType.unlock, 1),
+    DesveladoItemData("Falling Platforms Unlock", ItemType.unlock, 2),
+    DesveladoItemData("Ghost Walls Unlock", ItemType.unlock, 3),
+    DesveladoItemData("Chandeliers Unlock", ItemType.unlock, 4),
 ]
 
 UNLOCK_ITEMS_MAP: dict[str, str] = {
@@ -50,26 +67,28 @@ UNLOCK_ITEMS_MAP: dict[str, str] = {
 }
 
 BONNIE_ITEMS: List[DesveladoItemData] = [
-    DesveladoItemData("Bonnie Bone", ItemClassification.filler)
+    DesveladoItemData("Bonnie Bone", ItemType.collectable, 0, ItemClassification.filler)
 ]
 
 FILLER: List[DesveladoItemData] = [
-    DesveladoItemData("Nothing!", ItemClassification.filler)
+    DesveladoItemData("Nothing!", ItemType.filler, 0, ItemClassification.filler)
 ]
 
-ALL_ITEM_DATA: List[DesveladoItemData] = MAP_ITEMS + UNLOCK_ITEMS + BONNIE_ITEMS + FILLER
 
-ITEM_NAME_TO_ID = {
-    item.name: id+1 for id, item in enumerate(ALL_ITEM_DATA)
-}
+BASE_ITEM_DATA: List[DesveladoItemData] = MAP_ITEMS + UNLOCK_ITEMS
+ALL_ITEM_DATA: List[DesveladoItemData]  = MAP_ITEMS + UNLOCK_ITEMS + BONNIE_ITEMS + FILLER
 
 def create_random_filler_item(world: DesveladoWorld):
     return DesveladoItemData("Nothing!", ItemClassification.filler)
 
 def create_all_items(world: DesveladoWorld):
+    # Base items
     itempool: List[Item] = [
-        world.create_item(item.name) for item in ALL_ITEM_DATA
+        world.create_item(item.name) for item in BASE_ITEM_DATA
     ]
+
+    # Collectables
+    itempool += [world.create_item("Bonnie Bone") for _ in range(BONNIE_BONES_AMOUNT)]
 
     number_of_items = len(itempool)
 
@@ -80,5 +99,37 @@ def create_all_items(world: DesveladoWorld):
 
     world.multiworld.itempool += itempool
 
+## ID table looks like:
+## Map Parts:     1   + id
+## Unlocks:       100 + id
+## Collectables:  200 + id
+## Filler:        300 + id
+def generate_item_table() -> dict[str, int]:
+    table = {}
+
+    for item in ALL_ITEM_DATA:
+        table[item.name] = ITEM_TYPE_OFFSET_TABLE[item.type] + item.id_in_type
+
+    return table
+
+ITEM_NAME_TO_ID = generate_item_table()
+
 def get_item_by_name(world: DesveladoWorld, name: str) -> DesveladoItem:
-    return next(DesveladoItem(item.name, item.classification, ITEM_NAME_TO_ID[item.name], world.player) for item in ALL_ITEM_DATA if item.name == name)
+    return next(DesveladoItem(item.name, get_item_classification(world, item), ITEM_NAME_TO_ID[item.name], world.player) for item in ALL_ITEM_DATA if item.name == name)
+
+def generate_item_name_groups() -> dict[str, set[str]]:
+    groups = {
+        "Map Parts": set(),
+        "Unlocks": set(),
+        "Bones": set(),
+    }
+
+    for item in ALL_ITEM_DATA:
+        if item.type == ItemType.map_part:
+            groups["Map Parts"].add(item.name)
+        elif item.type == ItemType.unlock:
+            groups["Unlocks"].add(item.name)
+        elif item.type == ItemType.collectable:
+            groups["Bones"].add(item.name)
+
+    return groups
