@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://c010lfdmcb5xw"]
+
+[ext_resource type="Shader" path="res://mods-unpacked/JLannoo-DesveladoAP/ui/blind_overlay.gdshader" id="1_813e6"]
+[ext_resource type="Script" path="res://mods-unpacked/JLannoo-DesveladoAP/ui/blind_overlay.gd" id="1_ji6y6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_opt30"]
+shader = ExtResource("1_813e6")
+shader_parameter/time = 1.0
+shader_parameter/texture_size = Vector2(1920, 1080)
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+shader_parameter/inner_color = Color(0, 0, 0, 0)
+shader_parameter/position = Vector2(960, 540)
+shader_parameter/inner_radius = 0.1
+shader_parameter/outer_radius = 0.2
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_nsgqn"]
+
+[sub_resource type="Animation" id="Animation_mch6w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_416f4"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.51572, 1),
+"update": 0,
+"values": [2.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kmxo2"]
+_data = {
+"RESET": SubResource("Animation_mch6w"),
+"fade_in": SubResource("Animation_416f4")
+}
+
+[node name="BlindOverlay" type="TextureRect"]
+z_index = 10
+material = SubResource("ShaderMaterial_opt30")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("CanvasTexture_nsgqn")
+script = ExtResource("1_ji6y6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kmxo2")
+}

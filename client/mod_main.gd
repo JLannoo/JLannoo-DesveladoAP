@@ -65,6 +65,7 @@ func _ready() -> void:
 	
 	Console.add_command("notification", _trigger_notification, 2)
 	Console.add_command("level_room", _move_to_level_room, 2)
+	Console.add_command("trap", _execute_trap, 1)
 
 	ModLoaderLog.info("Ready!", LOG_NAME)
 
@@ -203,3 +204,29 @@ func _handle_map_received(item: NetworkItem):
 # Functional side of mechanic unlocks are handled by UnlockableComponent
 func _handle_unlock_received(item: NetworkItem):
 	notification_manager.notify_ap_item(item)
+
+func _execute_trap(trap: String):
+	if trap == "death":
+		var t = DeathTrap.new()
+		add_child(t)
+		t.trigger_trap()
+	elif trap == "flip":
+		var t = FlipTrap.new()
+		add_child(t)
+		t.trigger_trap(5.0)
+	elif trap == "ice":
+		var t = IceTrap.new()
+		add_child(t)
+		t.trigger_trap(5.0)
+	elif trap == "relight":
+		var t = RelightTrap.new()
+		add_child(t)
+		t.trigger_trap()
+	elif trap == "blind":
+		var t = BlindTrap.new()
+		add_child(t)
+		t.trigger_trap(5.0)
+	elif trap == "confusion":
+		var t = ConfusionTrap.new()
+		add_child(t)
+		t.trigger_trap(30.0)
