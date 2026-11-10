@@ -170,6 +170,10 @@ func _handle_item_received(item: NetworkItem):
 	elif item_name.contains("Unlock"):
 		_handle_unlock_received(item)
 		return
+
+	elif item.name.contains("Trap"):
+		_handle_trap_received(item)
+		return
 	
 
 func _handle_bone_received(item: NetworkItem):
@@ -204,6 +208,15 @@ func _handle_map_received(item: NetworkItem):
 # Functional side of mechanic unlocks are handled by UnlockableComponent
 func _handle_unlock_received(item: NetworkItem):
 	notification_manager.notify_ap_item(item)
+
+func _handle_trap_received(item: NetworkItem):
+	var item_name = item.get_name().to_lower()
+	var trap_name = item_name.split(" ")[0]
+	if not trap_name:
+		print("Tried to receive %s (%d) trap" % [item_name, item.id])
+		return
+	
+	_execute_trap(trap_name)
 
 func _execute_trap(trap: String):
 	if trap == "death":
