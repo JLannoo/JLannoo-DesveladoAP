@@ -1,44 +1,88 @@
 #!/usr/bin/env bash
-# Usage: scripts/release.sh <version>   e.g. scripts/release.sh 0.1.0
-# Sets the version in the world and the client, commits, and tags v<version>.
-# Pushing is left to you: git push --follow-tags
+# Release flow:
+#   1. scripts/release.sh bump <version>
+#
+#
+#   2. Export the mod with Godot Mod Tool
+#   3. scripts/release.sh publish <mod.zip>  builds apworld, push, create the GitHub release
 set -euo pipefail
-
-VERSION="${1:-}"
-if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]+)?$ ]]; then
-    echo "usage: $0 <x.y.z[-prerelease]>" >&2
-    exit 1
-fi
-TAG="v$VERSION"
-
-cd "$(git rev-parse --show-toplevel)"
-
-if [[ -n "$(git status --porcelain)" ]]; then
-    echo "error: working tree is not clean, commit or stash first" >&2
-    exit 1
-fi
-if git rev-parse -q --verify "refs/tags/$TAG" >/dev/null; then
-    echo "error: tag $TAG already exists" >&2
-    exit 1
-fi
 
 WORLD_JSON=world/archipelago.json
 MANIFEST=client/manifest.json
+MOD_ID=JLannoo-DesveladoAP
 
-# sed instead of a JSON rewrite, to keep the files' formatting intact
-sed -E -i "s/(\"world_version\"[[:space:]]*:[[:space:]]*\")[^\"]*\"/\1$VERSION\"/" "$WORLD_JSON"
-sed -E -i "s/(\"version_number\"[[:space:]]*:[[:space:]]*\")[^\"]*\"/\1$VERSION\"/" "$MANIFEST"
+die() { echo "error: $*" >&2; exit 1; }
 
-for f in "$WORLD_JSON" "$MANIFEST"; do
-    grep -q "\"$VERSION\"" "$f" || { echo "error: failed to set version in $f" >&2; exit 1; }
-done
+ask() { 
+    read -p "$1 (y/n) " -n 1 -r;
+    if ! [[ $REPLY =~ ^[Yy]$ ]]
+        then exit 1
+    fi
+}
 
-if [[ -n "$(git status --porcelain)" ]]; then
-    git add "$WORLD_JSON" "$MANIFEST"
-    git commit -m "chore: release $TAG"
-else
-    echo "version already $VERSION, tagging current commit"
-fi
+bump() {
+    local version="${1:-}"
+    [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]+)?$ ]] || die "usage: $0 bump <x.y.z[-prerelease]>"
+    local tag="v$version"
+    # Base version trims -prerelease because archipelago doesn't like that syntax
+    local base="${version%%-*}"
 
-git tag -a "$TAG" -m "$TAG"
-echo "tagged $TAG — push with: git push --follow-tags"
+    ask "working tree has unstaged changes, continue?"
+
+    git rev-parse -q --verify "refs/tags/$tag" >/dev/null && die "tag $tag already exists"
+
+    # write version
+    sed -E -i "s/(\"world_version\"[[:space:]]*:[[:space:]]*\")[^\"]*\"/\1$base\"/" "$WORLD_JSON"
+    sed -E -i "s/(\"version_number\"[[:space:]]*:[[:space:]]*\")[^\"]*\"/\1$base\"/" "$MANIFEST"
+    # compare version
+    [[ "$(jq -r .world_version "$WORLD_JSON")" == "$base" ]] || die "failed to set version in $WORLD_JSON"
+    [[ "$(jq -r .version_number "$MANIFEST")" == "$base" ]] || die "failed to set version in $MANIFEST"
+
+    if [[ -n "$(git status --porcelain)" ]]; then
+        git add "$WORLD_JSON" "$MANIFEST"
+        git commit -m "chore: release $tag"
+    else
+        echo "version already is $base, tagging current commit"
+    fi
+
+    git tag -a "$tag" -m "$tag"
+}
+
+publish() {
+    local mod_zip="${1:-}"
+    [[ -f "$mod_zip" ]] || die "usage: $0 publish <path/to/exported mod zip>"
+
+    ask "working tree has unstaged changes, continue?"
+
+    local tag
+    tag="$(git tag --points-at HEAD --list 'v*' | head -n1)"
+    [[ -n "$tag" ]] || die "HEAD has no v* tag, run '$0 bump <version>' first"
+
+    local version="${tag#v}"
+    local base="${version%%-*}"
+
+    # Check versions match
+    local zip_manifest="mods-unpacked/$MOD_ID/manifest.json"
+    local zip_version
+    zip_version="$(unzip -p "$mod_zip" "$zip_manifest" 2>/dev/null | jq -r .version_number)" \
+        || die "$mod_zip has no $zip_manifest"
+    [[ "$zip_version" == "$base" ]] || die "mod zip is version $zip_version but $tag expects $base"
+
+    rm -rf dist && mkdir dist
+    
+    git archive --format=zip --prefix=desvelado/ -o dist/desvelado.apworld "$tag:world"
+    cp "$mod_zip" "dist/$MOD_ID.zip"
+
+    local prerelease=()
+    [[ "$version" == *-* ]] && prerelease=(--prerelease)
+
+    git push origin HEAD "$tag"
+    gh release create "$tag" dist/desvelado.apworld "dist/$MOD_ID.zip" \
+        --title "$tag" --generate-notes "${prerelease[@]}"
+}
+
+case "${1:-}" in
+    bump)    shift; bump "$@" ;;
+    publish) shift; publish "$@" ;;
+    *)       sed -n '2,7p' "$0" | sed 's/^# \{0,1\}//'; exit 1 ;;
+esac
