@@ -83,5 +83,5 @@ publish() {
 case "${1:-}" in
     bump)    shift; bump "$@" ;;
     publish) shift; publish "$@" ;;
-    *) echo "it's 'bump' or 'publish', dumbass
+    *) echo "it's 'bump' or 'publish', dumbass"
 esac
