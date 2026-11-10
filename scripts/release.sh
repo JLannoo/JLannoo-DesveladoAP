@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
-# Release flow:
-#   1. scripts/release.sh bump <version>
-#
-#
-#   2. Export the mod with Godot Mod Tool
-#   3. scripts/release.sh publish <mod.zip>  builds apworld, push, create the GitHub release
+
 set -euo pipefail
 
 WORLD_JSON=world/archipelago.json
@@ -88,5 +83,5 @@ publish() {
 case "${1:-}" in
     bump)    shift; bump "$@" ;;
     publish) shift; publish "$@" ;;
-    *)       sed -n '2,7p' "$0" | sed 's/^# \{0,1\}//'; exit 1 ;;
+    *) echo "it's 'bump' or 'publish', dumbass
 esac
