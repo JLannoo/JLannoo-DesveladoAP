@@ -27,7 +27,9 @@ bump() {
     # Base version trims -prerelease because archipelago doesn't like that syntax
     local base="${version%%-*}"
 
-    ask "working tree has unstaged changes, continue?"
+    if [[ -n "$(git status --porcelain)" ]]; then 
+        ask "working tree has unstaged changes, continue?"
+    fi
 
     git rev-parse -q --verify "refs/tags/$tag" >/dev/null && die "tag $tag already exists"
 
@@ -52,7 +54,9 @@ publish() {
     local mod_zip="${1:-}"
     [[ -f "$mod_zip" ]] || die "usage: $0 publish <path/to/exported mod zip>"
 
-    ask "working tree has unstaged changes, continue?"
+    if [[ -n "$(git status --porcelain)" ]]; then 
+        ask "working tree has unstaged changes, continue?"
+    fi
 
     local tag
     tag="$(git tag --points-at HEAD --list 'v*' | head -n1)"
