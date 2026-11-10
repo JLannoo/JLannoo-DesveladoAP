@@ -1,7 +1,7 @@
 {
 	"name": "DesveladoAP",
 	"namespace": "JLannoo",
-	"version_number": "0.0.1-rc",
+	"version_number": "0.0.1",
 	"description": "An Archipelago implementation for Desvelado",
 	"website_url": "https://github.com/JLannoo/DesveladoAP",
 	"dependencies": [],
