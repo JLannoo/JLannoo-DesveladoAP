@@ -1,6 +1,6 @@
 extends "res://Levels/Components/lamp_chandelier.gd"
 
-@onready var unlockable: UnlockableComponent = UnlockableComponent.new("Chandelier Unlock")
+@onready var unlockable: UnlockableComponent = UnlockableComponent.new("Chandeliers Unlock")
 
 func _ready():
 	add_child(unlockable)
