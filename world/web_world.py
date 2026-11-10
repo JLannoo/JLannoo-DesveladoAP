@@ -17,6 +17,17 @@ class DesveladoWebWorld(WebWorld):
         ["JLannoo"],
     )
 
-    tutorials = [setup_en]
+    setup_es = Tutorial(
+        setup_en.tutorial_name,
+        "Una guía para configurar Desvelado para MultiWorld.",
+        "Español",
+        "setup_es.md",
+        "setup/es",
+        ["JLannoo"],
+    )
+
+    tutorials = [setup_en, setup_es]
+
+    game_info_languages = ["en", "es"]
 
     option_groups = options.desvelado_option_groups

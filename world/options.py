@@ -15,7 +15,7 @@ class Goal(Choice):
     default = 1
 
 class Deathlink(Toggle):
-    """Enables Deathlink for this world. If enabled, when a player dies in this world, all other players deathlink-enabled worlds will also die."""
+    """Enables Deathlink for this world. If enabled, when a player dies in this world, all other players with Deathlink enabled will also die."""
     display_name="Deathlink"
     default = False
 
@@ -59,7 +59,7 @@ class TrapIceWeight(TrapBaseWeight):
     """
     Sets the weight of Ice Traps in the item pool.
 
-    Ice Traps freeze the player in place.
+    Ice Traps freeze the player in place for a few seconds.
     """
     display_name="Ice Trap weight"
 
@@ -67,7 +67,7 @@ class TrapFlipWeight(TrapBaseWeight):
     """
     Sets the weight of Flip Traps in the item pool.
 
-    Flip Traps reverse the player's controls.
+    Flip Traps turn the screen upside down for a few seconds.
     """
     display_name="Flip Trap weight"
 
@@ -83,7 +83,7 @@ class TrapRelightWeight(TrapBaseWeight):
     """
     Sets the weight of Relight Traps in the item pool.
 
-    Relight Traps light already turned off lamps.
+    Relight Traps turn an already turned-off lamp back on.
     """
     display_name="Relight Trap weight"
 
