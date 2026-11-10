@@ -31,3 +31,14 @@ The full guides are in [`world/docs`](world/docs):
 
 ### Reporting issues
 Bugs and suggestions go in [GitHub issues](https://github.com/JLannoo/JLannoo-DesveladoAP/issues).
+
+## Acknowledgements
+The in-game Archipelago client is built on [GodotAP](https://github.com/EmilyV99/GodotAP) by
+[EmilyV99](https://github.com/EmilyV99), an Archipelago library for Godot.
+- Wiki: [GodotAP on the Archipelago Wiki](https://archipelago.miraheze.org/wiki/GodotAP)
+
+## License
+DesveladoAP is released under the [MIT License](LICENSE).
+
+Desvelado and its assets belong to their respective owners. This project is an unofficial fan mod and doesn't include
+any of the game's files.
