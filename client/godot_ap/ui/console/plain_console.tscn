@@ -28,7 +28,7 @@ theme_type_variation = &"Console_BG"
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer"]
 layout_mode = 2
 horizontal_scroll_mode = 0
-vertical_scroll_mode = 4
+vertical_scroll_mode = 2
 
 [node name="PartsContainer" type="VBoxContainer" parent="PanelContainer/ScrollContainer"]
 layout_mode = 2
