@@ -1,5 +1,4 @@
-class_name RelightTrap
-extends Trap
+extends "res://mods-unpacked/JLannoo-DesveladoAP/traps/Trap.gd"
 
 @onready var level = get_node("/root/Level")
 

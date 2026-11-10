@@ -1,4 +1,4 @@
-class_name APConfigManager extends Node
+extends Node
 
 @warning_ignore("unused_signal")
 signal config_changed

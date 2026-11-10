@@ -1,5 +1,7 @@
 extends "res://Levels/Components/collectable_notification.gd"
 
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+
 enum ICONS { BONE, SKULL, AP }
 
 const BONE_ICON = preload("res://Art/Sprites/Collectables/collectable_icon_bone.png")

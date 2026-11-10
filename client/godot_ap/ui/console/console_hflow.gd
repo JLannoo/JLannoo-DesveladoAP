@@ -1,4 +1,7 @@
-class_name ConsoleHFlow extends HFlowContainer
+extends HFlowContainer
+const ConsoleLabel = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/console_label.gd")
+const Spacing = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/spacing.gd")
+
 
 func _init() -> void:
 	add_theme_constant_override("&h_separation", 0)

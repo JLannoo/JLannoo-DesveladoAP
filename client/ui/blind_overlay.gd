@@ -1,4 +1,3 @@
-class_name BlindOverlay
 extends TextureRect
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

@@ -1,5 +1,4 @@
-class_name DeathTrap
-extends Trap
+extends "res://mods-unpacked/JLannoo-DesveladoAP/traps/Trap.gd"
 
 func _ready():
     name = "Death Trap"

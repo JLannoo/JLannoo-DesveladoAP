@@ -1,4 +1,7 @@
-class_name SliderBox extends MarginContainer
+extends MarginContainer
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+const CustomLabel = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/custom_containers/custom_label.gd")
+
 
 @export var total_slide_dur: float = 0.5
 @onready var row: HBoxContainer = $Row
@@ -21,17 +24,17 @@ func _ready():
 	row.reset_size()
 	custom_minimum_size = Vector2.ZERO
 	reset_size()
-	Archipelago.connected.connect(func(_conn, _json):
+	AP.instance.connected.connect(func(_conn, _json):
 		connect_btn.disabled = true
 		disconnect_btn.disabled = false
-		if Archipelago.AP_CONSOLE_CONNECTION_AUTO:
+		if AP.instance.AP_CONSOLE_CONNECTION_AUTO:
 			slide_to(false))
-	Archipelago.disconnected.connect(func():
+	AP.instance.disconnected.connect(func():
 		connect_btn.disabled = false
 		disconnect_btn.disabled = true
-		if Archipelago.AP_CONSOLE_CONNECTION_AUTO:
+		if AP.instance.AP_CONSOLE_CONNECTION_AUTO:
 			slide_to(true))
-	if Archipelago.AP_CONSOLE_CONNECTION_AUTO or Archipelago.AP_CONSOLE_CONNECTION_OPEN:
+	if AP.instance.AP_CONSOLE_CONNECTION_AUTO or AP.instance.AP_CONSOLE_CONNECTION_OPEN:
 		is_open = true
 	_set_open_x(0 if is_open else (box.size.x as int))
 

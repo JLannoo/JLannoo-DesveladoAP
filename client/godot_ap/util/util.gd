@@ -1,4 +1,5 @@
-class_name Util
+const Util = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/util/util.gd")
+
 
 const MOUSE_OFFSET := Vector2(0,-2)
 const GAMMA = 0.0001

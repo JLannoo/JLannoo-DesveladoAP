@@ -1,4 +1,8 @@
-class_name NetworkItem
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+const BaseConsole = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/base_console.gd")
+const ConsoleLabel = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/console_label.gd")
+const NetworkItem = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_item.gd")
+
 
 var id: int
 var loc_id: int
@@ -14,8 +18,8 @@ static func from(json: Dictionary, recv: bool) -> NetworkItem:
 	var v := NetworkItem.new()
 	v.id = json["item"]
 	v.loc_id = json["location"]
-	v.src_player_id = json["player"] if recv else Archipelago.conn.player_id
-	v.dest_player_id = Archipelago.conn.player_id if recv else json["player"]
+	v.src_player_id = json["player"] if recv else AP.instance.conn.player_id
+	v.dest_player_id = AP.instance.conn.player_id if recv else json["player"]
 	v.flags = json["flags"]
 	return v
 static func from_hint(json: Dictionary) -> NetworkItem:
@@ -35,8 +39,8 @@ func is_prog() -> bool:
 	return flags & AP.ItemClassification.PROG
 
 func get_name() -> String:
-	return Archipelago.conn.get_gamedata_for_player(dest_player_id).get_item_name(id)
+	return AP.instance.conn.get_gamedata_for_player(dest_player_id).get_item_name(id)
 func _to_string():
 	return "ITEM(%d at %d,player %d->%d,flags %d)" % [id,loc_id,src_player_id,dest_player_id,flags]
 func output() -> ConsoleLabel:
-	return BaseConsole.make_item(id, flags, Archipelago.conn.get_gamedata_for_player(dest_player_id))
+	return BaseConsole.make_item(id, flags, AP.instance.conn.get_gamedata_for_player(dest_player_id))

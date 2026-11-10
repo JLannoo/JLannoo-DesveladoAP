@@ -1,4 +1,8 @@
-@tool class_name ConsoleLabel extends Label
+@tool extends Label
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+const BaseConsole = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/base_console.gd")
+const ConsoleLabel = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/console_label.gd")
+
 
 static var _scene := preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/console_label.tscn") as PackedScene
 

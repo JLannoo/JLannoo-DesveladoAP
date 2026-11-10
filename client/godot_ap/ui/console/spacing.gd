@@ -1,4 +1,4 @@
-class_name Spacing extends Control
+extends Control
 
 var parent: HFlowContainer
 var hspace: float

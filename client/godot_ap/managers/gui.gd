@@ -1,4 +1,3 @@
-class_name GUI
 
 static func make_cbox_row(s: String, initial_state: bool, proc: Callable) -> HBoxContainer:
 	var hbox := HBoxContainer.new()

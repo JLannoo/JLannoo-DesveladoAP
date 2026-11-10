@@ -1,4 +1,14 @@
 extends Node
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+const BlindTrap = preload("res://mods-unpacked/JLannoo-DesveladoAP/traps/BlindTrap.gd")
+const ConfusionTrap = preload("res://mods-unpacked/JLannoo-DesveladoAP/traps/ConfusionTrap.gd")
+const ConnectionInfo = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/connection_info.gd")
+const DeathTrap = preload("res://mods-unpacked/JLannoo-DesveladoAP/traps/DeathTrap.gd")
+const FlipTrap = preload("res://mods-unpacked/JLannoo-DesveladoAP/traps/FlipTrap.gd")
+const IceTrap = preload("res://mods-unpacked/JLannoo-DesveladoAP/traps/IceTrap.gd")
+const NetworkItem = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_item.gd")
+const RelightTrap = preload("res://mods-unpacked/JLannoo-DesveladoAP/traps/RelightTrap.gd")
+
 
 const MOD_DIR := "JLannoo-DesveladoAP"
 const LOG_NAME := "JLannoo-DesveladoAP:Main"
@@ -34,9 +44,17 @@ const PLAYER_EXT = preload("res://mods-unpacked/JLannoo-DesveladoAP/extensions/P
 
 var first_map_found: bool = false
 
+const AP_SCENE = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.tscn")
+var ap_node: AP
+
 func _init() -> void:
 	mod_dir_path = ModLoaderMod.get_unpacked_dir().path_join(MOD_DIR)
 	install_script_extensions()
+
+	# Stand-in for the `Archipelago` autoload. Instantiated here so AP.instance
+	# is set before any extended game script runs; added to the tree in _ready.
+	ap_node = AP_SCENE.instantiate()
+	ap_node.name = "Archipelago"
 
 func install_script_extensions() -> void:
 	extensions_dir_path = mod_dir_path.path_join("extensions")
@@ -69,11 +87,15 @@ func _ready() -> void:
 
 	ModLoaderLog.info("Ready!", LOG_NAME)
 
+	# Root is still adding autoloads at this point, so defer.
+	tree.root.add_child.call_deferred(ap_node)
+	await ap_node.ready
+
 	_try_ap_connect()
 
-	Archipelago.on_attach_console.connect(_on_attach_console)
+	AP.instance.on_attach_console.connect(_on_attach_console)
 
-	Archipelago.connected.connect(_on_ap_connected)
+	AP.instance.connected.connect(_on_ap_connected)
 
 func _on_node_added(node: Node) -> void:
 	# Hook into room adding for catching all room IDs
@@ -104,16 +126,16 @@ func _on_node_added(node: Node) -> void:
 			player.died.connect(_on_player_died)
 
 func _on_room_cleared(s: Room) -> void:
-	if Archipelago.is_ap_connected():
+	if AP.instance.is_ap_connected():
 		var current_stage = StageManager.current_stages_data.stages[StageManager.current_stage]
-		var data = Archipelago.conn.get_gamedata_for_player()
+		var data = AP.instance.conn.get_gamedata_for_player()
 
 		# Room index does not exist in-game. Work around with location name.
 		var location_name = "%s - %s - Room Cleared" % [LEVEL_DISPLAY_NAME[current_stage.name.to_upper()], s.name]
 		if current_stage.name.to_upper().contains("RUN"):
 			location_name = "%s - Room Cleared" % [LEVEL_DISPLAY_NAME[current_stage.name.to_upper()]]
 
-		Archipelago.collect_location(data.get_loc_id(location_name))
+		AP.instance.collect_location(data.get_loc_id(location_name))
 
 func _trigger_notification(text: String, count: String) -> void:
 	notification_manager.notify(text, count)
@@ -130,11 +152,11 @@ func _move_to_level_room(level_id: String, room_id: String) -> void:
 	
 
 func _on_player_died():
-	if Archipelago.is_ap_connected() and Archipelago.is_deathlink():
-		Archipelago.conn.send_deathlink()
+	if AP.instance.is_ap_connected() and AP.instance.is_deathlink():
+		AP.instance.conn.send_deathlink()
 
 func _try_ap_connect():
-	Archipelago.ap_connect("localhost", "38281", "Desvelado")
+	AP.instance.ap_connect("localhost", "38281", "Desvelado")
 
 func _on_attach_console():
 	ap_console = get_node("/root/Archipelago/Console")
@@ -149,8 +171,8 @@ func _on_close_console():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _on_ap_connected(_conn: ConnectionInfo, _json: Dictionary):
-	Archipelago.conn.obtained_item.connect(_on_item_receive)
-	Archipelago.conn.force_scout_all()
+	AP.instance.conn.obtained_item.connect(_on_item_receive)
+	AP.instance.conn.force_scout_all()
 
 func _on_item_receive(item: NetworkItem):
 	_handle_item_received(item)

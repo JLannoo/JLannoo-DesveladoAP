@@ -1,4 +1,10 @@
-@tool class_name ConsoleWindowContainer extends PanelContainer
+@tool extends PanelContainer
+const BaseConsole = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/base_console.gd")
+const ConsoleContainer = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console_container.gd")
+const SliderBox = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/slider_box.gd")
+const TypingBar = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/typing_bar.gd")
+const Util = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/util/util.gd")
+
 
 @onready var tabs: TabContainer = $Tabs
 @onready var console_tab: Control = $Tabs/Console

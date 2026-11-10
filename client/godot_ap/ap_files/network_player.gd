@@ -1,4 +1,9 @@
-class_name NetworkPlayer
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+const BaseConsole = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/base_console.gd")
+const ConsoleLabel = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/console_label.gd")
+const NetworkPlayer = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_player.gd")
+const NetworkSlot = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_slot.gd")
+
 
 var team: int
 var slot: int
@@ -6,7 +11,7 @@ var alias := ""
 var name : String
 
 func get_slot() -> NetworkSlot:
-	return Archipelago.conn.get_slot(slot)
+	return AP.instance.conn.get_slot(slot)
 func get_name(use_alias := true) -> String:
 	var ret := ""
 	if use_alias: ret = alias

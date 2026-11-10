@@ -47,7 +47,7 @@ button_pressed = true
 button_group = SubResource("ButtonGroup_oksvb")
 text = "Dark Mode"
 script = ExtResource("3_aogvt")
-target_theme_path = "res://mods-unpacked/JLannoo-Archipelago/godot_ap/ui/themes/dark_theme.tres"
+target_theme_path = "res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/themes/dark_theme.tres"
 metadata/_custom_type_script = "uid://cttniyxj6oq7h"
 
 [node name="LightTheme" type="CheckBox" parent="Margin/Tabs/Theme/Row/Col1"]
@@ -55,5 +55,5 @@ layout_mode = 2
 button_group = SubResource("ButtonGroup_oksvb")
 text = "Light Mode"
 script = ExtResource("3_aogvt")
-target_theme_path = "res://mods-unpacked/JLannoo-Archipelago/godot_ap/ui/themes/light_theme.tres"
+target_theme_path = "res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/themes/light_theme.tres"
 metadata/_custom_type_script = "uid://cttniyxj6oq7h"

@@ -1,4 +1,32 @@
-class_name AP extends Node
+extends Node
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+
+const APConfigManager = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/managers/configs.gd")
+const APConsoleCommand = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/console_command.gd")
+const APCredentials = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/connect_creds.gd")
+const APLock = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/ap_lock.gd")
+const APSaveManager = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/managers/saves.gd")
+
+const BaseConsole = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/base_console.gd")
+const ConsoleHFlow = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/console_hflow.gd")
+const CommandManager = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/managers/command_manager.gd")
+
+const ConnectionInfo = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/connection_info.gd")
+const ConsoleContainer = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console_container.gd")
+
+const DataCache = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/datacache.gd")
+const NetworkHint = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_hint.gd")
+const NetworkItem = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_item.gd")
+const NetworkPlayer = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_player.gd")
+const NetworkSlot = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_slot.gd")
+const SignalChooser = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/util/signal_chooser.gd")
+
+const Util = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/util/util.gd")
+const Version = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/version.gd")
+
+## The live Archipelago node. Replaces the `Archipelago` autoload, which a mod
+## can't register in an exported game. Created by mod_main.gd.
+static var instance: AP
 
 ## The game name to connect to. Empty string for TextOnly or HintGame clients.
 @export var AP_GAME_NAME := ""
@@ -301,8 +329,8 @@ func _log(s: String) -> void:
 	print(msg)
 	_logged_message.emit(msg)
 static func log(s: Variant) -> void:
-	if Archipelago:
-		Archipelago._log(str(s))
+	if AP.instance:
+		AP.instance._log(str(s))
 	else:
 		print("[AP!] %s" % s)
 
@@ -318,6 +346,8 @@ static func dblog(s: Variant) -> void:
 
 var _socket_state: WebSocketPeer.State = WebSocketPeer.STATE_CLOSED
 func _poll() -> void:
+	if not is_inside_tree():
+		await tree_entered
 	while true:
 		await get_tree().process_frame
 		if status == APStatus.DISCONNECTED:
@@ -387,7 +417,7 @@ func send_command(cmdname: String, args: Dictionary) -> void:
 ## Sends an array of dictionaries as a packet of commands to the server
 func send_packet(obj: Array) -> void:
 	var s := JSON.stringify(obj)
-	Archipelago.comm_log("SEND", s)
+	AP.instance.comm_log("SEND", s)
 	_socket.send_text(s)
 func _handle_command(json: Dictionary) -> void:
 	var command = json["cmd"]
@@ -1053,7 +1083,7 @@ func init_command_manager(can_connect: bool, server_autofills: bool = true):
 			.set_call(func(mgr: CommandManager, _cmd: APConsoleCommand, _msg: String):
 				var folder := BaseConsole.make_foldable("[ SLOT_DATA ]", "/slot_data", ComplexColor.as_special(SpecialColor.UI_MESSAGE))
 				mgr.console.add(folder)
-				folder.add(BaseConsole.make_indented_block(JSON.stringify(Archipelago.conn.slot_data, "\t"), 25))
+				folder.add(BaseConsole.make_indented_block(JSON.stringify(AP.instance.conn.slot_data, "\t"), 25))
 				folder.fold(false)
 				))
 		cmd_manager.setup_debug_commands()
@@ -1076,6 +1106,7 @@ func _autofill_track(msg: String) -> Array[String]:
 		return new_fills
 	return []
 func _init():
+	instance = self
 	init_command_manager(true)
 	_poll.call_deferred()
 func _ready():
@@ -1103,7 +1134,7 @@ enum ItemClassification {
 static func get_item_class_color(flags: int) -> RichColor:
 	var spec := SpecialColor.ITEM
 	if flags & ItemClassification.PROG:
-		if Archipelago.AP_ENABLE_PROGUSEFUL and (flags & ItemClassification.USEFUL):
+		if AP.instance.AP_ENABLE_PROGUSEFUL and (flags & ItemClassification.USEFUL):
 			spec = SpecialColor.ITEM_PROGUSEFUL
 		else:
 			spec = SpecialColor.ITEM_PROG
@@ -1221,13 +1252,13 @@ func set_deathlink(state: bool) -> void:
 	set_tag("DeathLink", state)
 
 func is_deathlink() -> bool:
-	return "DeathLink" in Archipelago.AP_GAME_TAGS
+	return "DeathLink" in AP.instance.AP_GAME_TAGS
 
 func set_traplink(state: bool) -> void:
 	set_tag("TrapLink", state)
 
 func is_traplink() -> bool:
-	return "TrapLink" in Archipelago.AP_GAME_TAGS
+	return "TrapLink" in AP.instance.AP_GAME_TAGS
 
 enum ClientStatus {
 	CLIENT_UNKNOWN = 0,

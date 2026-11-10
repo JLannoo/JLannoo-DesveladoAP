@@ -1,5 +1,7 @@
 extends "res://Levels/Components/falling_platform.gd"
 
+const UnlockableComponent = preload("res://mods-unpacked/JLannoo-DesveladoAP/UnlockableComponent.gd")
+
 const FIXED_SHADER = preload("res://mods-unpacked/JLannoo-DesveladoAP/extensions/Resources/Shaders/falling_platform.gdshader")
 
 @onready var unlockable: UnlockableComponent = UnlockableComponent.new("Falling Platforms Unlock")

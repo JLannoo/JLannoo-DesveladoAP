@@ -1,5 +1,4 @@
-class_name IceTrap
-extends Trap
+extends "res://mods-unpacked/JLannoo-DesveladoAP/traps/Trap.gd"
 
 @onready var player: Player = get_node("/root/Level/Player")
 

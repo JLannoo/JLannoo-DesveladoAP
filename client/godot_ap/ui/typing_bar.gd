@@ -1,4 +1,7 @@
-@tool class_name TypingBar extends LineEdit
+@tool extends LineEdit
+const CommandManager = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/managers/command_manager.gd")
+const StringBar = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/autofill_bar.gd")
+
 
 @export var clear_text_on_send := true
 @export var store_history := true

@@ -1,5 +1,7 @@
 extends "res://Levels/Components/ghost_wall.gd"
 
+const UnlockableComponent = preload("res://mods-unpacked/JLannoo-DesveladoAP/UnlockableComponent.gd")
+
 @onready var unlockable: UnlockableComponent = UnlockableComponent.new("Ghost Walls Unlock")
 
 func _ready():

@@ -1,4 +1,5 @@
-class_name SignalChooser
+const SignalChooser = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/util/signal_chooser.gd")
+
 
 static var active_choosers: Array[SignalChooser]
 

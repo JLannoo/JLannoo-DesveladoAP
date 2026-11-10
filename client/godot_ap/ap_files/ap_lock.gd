@@ -1,4 +1,6 @@
-class_name APLock extends Node
+extends Node
+const ConnectionInfo = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/connection_info.gd")
+
 ## Data unique to a room connection, locking a save to only connect to the same room.
 
 var valid: bool = false

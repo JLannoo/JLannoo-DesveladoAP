@@ -1,5 +1,6 @@
-class_name BlindTrap
-extends Trap
+extends "res://mods-unpacked/JLannoo-DesveladoAP/traps/Trap.gd"
+const BlindOverlay = preload("res://mods-unpacked/JLannoo-DesveladoAP/ui/blind_overlay.gd")
+
 
 @onready var camera: Camera2D = get_node("/root/Level/Camera2D")
 @onready var player: Player = get_node("/root/Level/Player")

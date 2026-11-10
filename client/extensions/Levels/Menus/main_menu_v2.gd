@@ -1,4 +1,6 @@
 extends "res://Levels/Menus/main_menu_v2.gd"
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+
 
 func _ready() -> void:
 	super()
@@ -19,4 +21,4 @@ func _ready() -> void:
 	menu_item_container.add_child(menu_item)
 
 func _on_ap_settings_pressed():
-	Archipelago.open_console()
+	AP.instance.open_console()

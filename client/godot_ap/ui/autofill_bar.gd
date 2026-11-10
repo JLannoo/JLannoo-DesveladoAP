@@ -1,4 +1,6 @@
-@tool class_name StringBar extends Control
+@tool extends Control
+const Util = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/util/util.gd")
+
 
 signal clicked(index: int)
 

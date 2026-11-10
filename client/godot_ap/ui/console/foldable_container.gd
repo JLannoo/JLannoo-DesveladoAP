@@ -1,4 +1,8 @@
-class_name ConsoleFoldableContainer extends VBoxContainer
+extends VBoxContainer
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+const ConsoleFoldableContainer = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/foldable_container.gd")
+const ConsoleLabel = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/console_label.gd")
+
 
 var label: ConsoleLabel
 var body: VBoxContainer

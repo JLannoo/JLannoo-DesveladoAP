@@ -1,4 +1,5 @@
-class_name NetworkSlot
+const NetworkSlot = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_slot.gd")
+
 
 var name : String
 var game: String

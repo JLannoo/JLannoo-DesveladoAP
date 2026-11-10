@@ -1,4 +1,4 @@
-class_name CustomLabel extends Panel
+extends Panel
 
 @export var text: String = "":
 	set(val):

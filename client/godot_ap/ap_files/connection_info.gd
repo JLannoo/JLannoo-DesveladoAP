@@ -1,4 +1,12 @@
-class_name ConnectionInfo
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+const APLocation = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/ap_location.gd")
+const DataCache = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/datacache.gd")
+const NetworkHint = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_hint.gd")
+const NetworkItem = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_item.gd")
+const NetworkPlayer = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_player.gd")
+const NetworkSlot = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_slot.gd")
+const Version = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/version.gd")
+
 
 # Variables / data
 
@@ -73,9 +81,9 @@ func get_loc_by_name(loc_name: String) -> APLocation:
 func _load_locations() -> void:
 	locations.clear()
 	locs_by_name.clear()
-	if Archipelago.datapack_pending:
-		await Archipelago.all_datapacks_loaded
-	for locid in Archipelago.location_list():
+	if AP.instance.datapack_pending:
+		await AP.instance.all_datapacks_loaded
+	for locid in AP.instance.location_list():
 		var loc := APLocation.make(locid)
 		locations[locid] = loc
 		locs_by_name[loc.name] = loc
@@ -124,7 +132,7 @@ func set_hint_notify(proc: Callable) -> void:
 ## to be called every time the specified `key` is updated on the server.
 func set_notify(key: String, proc: Callable) -> void:
 	if not _notified_keys.has(key):
-		Archipelago.send_command("SetNotify", {"keys": [key]})
+		AP.instance.send_command("SetNotify", {"keys": [key]})
 		_notified_keys[key] = true
 	setreply.connect(func(json):
 		if json["key"] == key:
@@ -134,7 +142,7 @@ var _retrieve_queue: Dictionary
 ## Sends a `Get` packet, and connects the specified `Callable(Variant)->void`
 ## to be called once when the result is retrieved
 func retrieve(key: String, proc: Callable) -> void:
-	Archipelago.send_command("Get", {"keys": [key]})
+	AP.instance.send_command("Get", {"keys": [key]})
 	if not _retrieve_queue.has(key):
 		_retrieve_queue[key] = [proc]
 	else: _retrieve_queue[key].append(proc)
@@ -148,7 +156,7 @@ func _on_retrieve(json: Dictionary) -> void:
 ## Sends an `UpdateHint` packet, updating the status of an existing hint
 ## The hint is identified by `loc, plyr`, the location it is for and the player who is to find it
 func update_hint(loc: int, plyr: int, status: NetworkHint.Status) -> void:
-	Archipelago.send_command("UpdateHint", {"location": loc, "player": plyr, "status": status})
+	AP.instance.send_command("UpdateHint", {"location": loc, "player": plyr, "status": status})
 
 var _scout_cache: Dictionary
 var _scout_queue: Dictionary
@@ -158,7 +166,7 @@ var _scout_queue: Dictionary
 func scout(location: int, create_as_hint: int, proc: Callable) -> void:
 	var item: NetworkItem = _scout_cache.get(location)
 	if create_as_hint or not item: # Always send if `create_as_hint`!
-		Archipelago.send_command("LocationScouts", {"locations": [location], "create_as_hint": create_as_hint})
+		AP.instance.send_command("LocationScouts", {"locations": [location], "create_as_hint": create_as_hint})
 	if not proc: return
 	if item:
 		proc.call(item)
@@ -177,7 +185,7 @@ func _on_locinfo(json: Dictionary) -> void:
 	if locs.size() == slot_locations.size():
 		all_scout_cached.emit()
 func force_scout_all() -> void: ## Scouts every location into the local cache
-	Archipelago.send_command("LocationScouts", {"locations": slot_locations.keys(), "create_as_hint": 0})
+	AP.instance.send_command("LocationScouts", {"locations": slot_locations.keys(), "create_as_hint": 0})
 
 ## Sends a `Bounce` packet with whatever information you like
 func send_bounce(data: Dictionary, target_games: Array[String], target_slots: Array[String], target_tags: Array[String]) -> void:
@@ -190,26 +198,26 @@ func send_bounce(data: Dictionary, target_games: Array[String], target_slots: Ar
 		cmd["tags"] = target_tags
 	if not cmd: return
 	cmd.merge(data)
-	Archipelago.send_command("Bounce", cmd)
+	AP.instance.send_command("Bounce", cmd)
 
 ## Sends a `Bounce` packet designed for the `DeathLink` feature
 ## Requires the client be connected with the `DeathLink` tag
 func send_deathlink(cause: String = ""):
-	if not Archipelago.is_deathlink():
+	if not AP.instance.is_deathlink():
 		AP.log("Tried to send DeathLink while DeathLink is not enabled!")
 		return
 	var cmd: Dictionary = {"data": {}}
 	if not cause.is_empty():
 		cmd["data"]["cause"] = cause
 	cmd["data"]["source"] = get_player_name(-1, false)
-	Archipelago.last_sent_deathlink_time = Time.get_unix_time_from_system()
-	cmd["data"]["time"] = Archipelago.last_sent_deathlink_time
+	AP.instance.last_sent_deathlink_time = Time.get_unix_time_from_system()
+	cmd["data"]["time"] = AP.instance.last_sent_deathlink_time
 	send_bounce(cmd, [], [], ["DeathLink"])
 
 ## Sends a `Bounce` packet designed for the `TrapLink` feature
 ## Requires the client be connected with the `TrapLink` tag
 func send_traplink(trap_name: String):
-	if not Archipelago.is_traplink():
+	if not AP.instance.is_traplink():
 		AP.log("Tried to send TrapLink while TrapLink is not enabled!")
 		return
 	if trap_name.is_empty():
@@ -218,6 +226,6 @@ func send_traplink(trap_name: String):
 	var cmd: Dictionary = {"data": {}}
 	cmd["data"]["trap_name"] = trap_name
 	cmd["data"]["source"] = get_player_name(-1, false)
-	Archipelago.last_sent_traplink_time = Time.get_unix_time_from_system()
-	cmd["data"]["time"] = Archipelago.last_sent_traplink_time
+	AP.instance.last_sent_traplink_time = Time.get_unix_time_from_system()
+	cmd["data"]["time"] = AP.instance.last_sent_traplink_time
 	send_bounce(cmd, [], [], ["TrapLink"])

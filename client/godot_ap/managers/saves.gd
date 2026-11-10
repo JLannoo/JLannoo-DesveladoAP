@@ -1,4 +1,9 @@
-class_name APSaveManager extends Node
+extends Node
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+const APConsoleCommand = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/console_command.gd")
+const CommandManager = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/managers/command_manager.gd")
+const SaveFile = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/save_file.gd")
+
 
 @export var SAVE_HEADER: String = "GodotAP_Save_File"
 var open_save: SaveFile
@@ -13,7 +18,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	if OS.is_debug_build(): # Debug commands for forcibly saving/loading via console
-		Archipelago.cmd_manager.register_command(APConsoleCommand.new("/save").debug()
+		AP.instance.cmd_manager.register_command(APConsoleCommand.new("/save").debug()
 			.add_help("[num]", "Saves the save file, optionally to a different-numbered slot. num >= 0.")
 			.set_call(func(mgr: CommandManager, cmd: APConsoleCommand, msg: String):
 				var command_args = msg.split(" ", true, 2)
@@ -23,7 +28,7 @@ func _ready() -> void:
 					cmd.output_usage(mgr.console)
 				else:
 					write_save(int(command_args[1]))))
-		Archipelago.cmd_manager.register_command(APConsoleCommand.new("/delsave").debug()
+		AP.instance.cmd_manager.register_command(APConsoleCommand.new("/delsave").debug()
 			.add_help("num", "Deletes the specified save file. num >= 0.")
 			.set_call(func(mgr: CommandManager, cmd: APConsoleCommand, msg: String):
 				var command_args = msg.split(" ", true, 2)
@@ -31,21 +36,21 @@ func _ready() -> void:
 					cmd.output_usage(mgr.console)
 				else:
 					delete_save(int(command_args[1]))))
-		Archipelago.cmd_manager.register_command(APConsoleCommand.new("/loadsave").debug()
+		AP.instance.cmd_manager.register_command(APConsoleCommand.new("/loadsave").debug()
 			.add_help("num", "Loads the specified save file. num >= 0.")
 			.set_call(func(mgr: CommandManager, cmd: APConsoleCommand, msg: String):
 				var command_args = msg.split(" ", true, 2)
 				if command_args.size() != 2 or not command_args[1].is_valid_int() or int(command_args[1]) < 0:
 					cmd.output_usage(mgr.console)
 				else:
-					var is_conn: bool = Archipelago.status != AP.APStatus.DISCONNECTED
+					var is_conn: bool = AP.instance.status != AP.APStatus.DISCONNECTED
 					if is_conn:
-						Archipelago.ap_disconnect()
-						while Archipelago.status != AP.APStatus.DISCONNECTED:
-							await Archipelago.status_updated
+						AP.instance.ap_disconnect()
+						while AP.instance.status != AP.APStatus.DISCONNECTED:
+							await AP.instance.status_updated
 					read_save(int(command_args[1]))
 					if is_conn:
-						Archipelago.ap_reconnect_to_save()))
+						AP.instance.ap_reconnect_to_save()))
 
 func save() -> void:
 	write_save(open_save_ind)
@@ -63,8 +68,8 @@ func read_save(ind: int) -> bool:
 			open_save.clear()
 		file.close()
 	open_save_ind = ind
-	Archipelago.creds = open_save.creds
-	Archipelago.aplock = open_save.aplock
+	AP.instance.creds = open_save.creds
+	AP.instance.aplock = open_save.aplock
 	return true
 
 func write_save(ind: int) -> bool:

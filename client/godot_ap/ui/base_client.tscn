@@ -16,7 +16,6 @@ script = ExtResource("1_gj1xe")
 
 [node name="Tabs" type="TabContainer" parent="."]
 layout_mode = 2
-current_tab = 0
 tab_focus_mode = 0
 
 [node name="Console" parent="Tabs" instance=ExtResource("2_704wl")]

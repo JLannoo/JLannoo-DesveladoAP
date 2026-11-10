@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+const NetworkItem = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_item.gd")
+
 const NOTIFICATION_SCENE = "res://mods-unpacked/JLannoo-DesveladoAP/ui/collectable_notification.tscn"
 const AP_NOTIFICATION_SCRIPT = preload("res://mods-unpacked/JLannoo-DesveladoAP/ui/ap_notification.gd")
 
@@ -47,7 +50,7 @@ func notify_ap_item(item: NetworkItem, counter = ''):
 	else:
 		notify("Received %s from %s" % [
 			wrap_text_with_color(item.get_name(), color),
-			Archipelago.conn.get_player_name(item.src_player_id)
+			AP.instance.conn.get_player_name(item.src_player_id)
 		], counter)
 
 func wrap_text_with_color(text: String, color: Color) -> String:

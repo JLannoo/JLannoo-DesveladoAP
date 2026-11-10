@@ -1,4 +1,5 @@
-class_name FontStorage
+const Util = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/util/util.gd")
+
 
 func _init(_base_font: Font):
 	populate(_base_font)

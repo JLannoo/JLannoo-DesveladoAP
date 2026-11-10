@@ -1,5 +1,4 @@
-class_name FlipTrap
-extends Trap
+extends "res://mods-unpacked/JLannoo-DesveladoAP/traps/Trap.gd"
 
 @onready var camera: Camera2D = get_node("/root/Level/Camera2D")
 

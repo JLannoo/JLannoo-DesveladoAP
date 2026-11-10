@@ -1,5 +1,10 @@
-class_name UnlockableComponent
 extends Node2D
+
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+
+const ConnectionInfo = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/connection_info.gd")
+const NetworkItem = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_item.gd")
+const UnlockableComponent = preload("res://mods-unpacked/JLannoo-DesveladoAP/UnlockableComponent.gd")
 
 ## Class meant to be used alongside a level component.
 ## Adds `is_enabled` property, defaulting to false until a specific
@@ -20,19 +25,19 @@ func _init(item_name: String):
 	name = "Unlockable Component"
 
 	if not _on_ap_connection():
-		Archipelago.connected.connect(_on_ap_connection)
+		AP.instance.connected.connect(_on_ap_connection)
 	
 
 func _on_ap_connection(_conn: ConnectionInfo = null, _json: Dictionary = {}) -> bool:
-	if not Archipelago.is_ap_connected(): return false
+	if not AP.instance.is_ap_connected(): return false
 
-	if not Archipelago.conn.received_items.any(func (item: NetworkItem): 
+	if not AP.instance.conn.received_items.any(func (item: NetworkItem): 
 		return item.get_name() == needed_item
 	):
 		is_enabled = false
 
-	if not Archipelago.conn.obtained_item.is_connected(_on_item_arrive):
-		Archipelago.conn.obtained_item.connect(_on_item_arrive)
+	if not AP.instance.conn.obtained_item.is_connected(_on_item_arrive):
+		AP.instance.conn.obtained_item.connect(_on_item_arrive)
 	return true
 
 func _on_item_arrive(item: NetworkItem):

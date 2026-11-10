@@ -1,5 +1,7 @@
 extends "res://Levels/Components/switch.gd"
 
+const UnlockableComponent = preload("res://mods-unpacked/JLannoo-DesveladoAP/UnlockableComponent.gd")
+
 @onready var unlockable: UnlockableComponent = UnlockableComponent.new(
 	"Ghost Switch Unlock" 
 	if scene_file_path.ends_with("switch_ghost.tscn") 

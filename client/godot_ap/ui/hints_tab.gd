@@ -1,4 +1,13 @@
-class_name HintsTab extends MarginContainer
+extends MarginContainer
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+const BaseConsole = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/base_console.gd")
+const ConnectionInfo = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/connection_info.gd")
+const ConsoleLabel = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/console_label.gd")
+const DataCache = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/datacache.gd")
+const GUI = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/managers/gui.gd")
+const NetworkHint = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_hint.gd")
+const Util = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/util/util.gd")
+
 
 @export_range(0.0, 20.0, 0.5, "or_greater") var hint_vertical_separation: int = 15
 @onready var hint_console: BaseConsole = $Console.console
@@ -28,19 +37,19 @@ var old_status_system := false
 
 var _sort_index_data: Dictionary = {}
 func sort_by_dest(a: NetworkHint, b: NetworkHint) -> int:
-	return (Archipelago.conn.get_player_name(a.item.dest_player_id).nocasecmp_to(
-		Archipelago.conn.get_player_name(b.item.dest_player_id)))
+	return (AP.instance.conn.get_player_name(a.item.dest_player_id).nocasecmp_to(
+		AP.instance.conn.get_player_name(b.item.dest_player_id)))
 func sort_by_item(a: NetworkHint, b: NetworkHint) -> int:
-	var a_data: DataCache = Archipelago.conn.get_gamedata_for_player(a.item.dest_player_id)
-	var b_data: DataCache = Archipelago.conn.get_gamedata_for_player(b.item.dest_player_id)
+	var a_data: DataCache = AP.instance.conn.get_gamedata_for_player(a.item.dest_player_id)
+	var b_data: DataCache = AP.instance.conn.get_gamedata_for_player(b.item.dest_player_id)
 	return (a_data.get_item_name(a.item.id).nocasecmp_to(
 		b_data.get_item_name(b.item.id)))
 func sort_by_src(a: NetworkHint, b: NetworkHint) -> int:
-	return (Archipelago.conn.get_player_name(a.item.src_player_id).nocasecmp_to(
-		Archipelago.conn.get_player_name(b.item.src_player_id)))
+	return (AP.instance.conn.get_player_name(a.item.src_player_id).nocasecmp_to(
+		AP.instance.conn.get_player_name(b.item.src_player_id)))
 func sort_by_loc(a: NetworkHint, b: NetworkHint) -> int:
-	var a_data: DataCache = Archipelago.conn.get_gamedata_for_player(a.item.src_player_id)
-	var b_data: DataCache = Archipelago.conn.get_gamedata_for_player(b.item.src_player_id)
+	var a_data: DataCache = AP.instance.conn.get_gamedata_for_player(a.item.src_player_id)
+	var b_data: DataCache = AP.instance.conn.get_gamedata_for_player(b.item.src_player_id)
 	return (a_data.get_loc_name(a.item.loc_id).nocasecmp_to(
 		b_data.get_loc_name(b.item.loc_id)))
 func sort_by_status(a: NetworkHint, b: NetworkHint) -> int:
@@ -174,9 +183,9 @@ func reset_hints_to_empty() -> void:
 	loc_filters = {}
 	load_hints([])
 func _ready():
-	Archipelago.connected.connect(func(conn: ConnectionInfo, _j: Dictionary):
+	AP.instance.connected.connect(func(conn: ConnectionInfo, _j: Dictionary):
 		conn.set_hint_notify(self.load_hints))
-	Archipelago.disconnected.connect(reset_hints_to_empty)
+	AP.instance.disconnected.connect(reset_hints_to_empty)
 	headings.append(BaseConsole.make_c_text("Receiving Player"))
 	headings.append(BaseConsole.make_c_text("Item"))
 	headings.append(BaseConsole.make_c_text("Finding Player"))
@@ -219,14 +228,14 @@ func refresh_hints():
 		if hint.status != NetworkHint.Status.NOT_FOUND and hint.status != NetworkHint.Status.FOUND:
 			old_status_system = false
 		if filter_allow(hint):
-			var data: DataCache = Archipelago.conn.get_gamedata_for_player(hint.item.src_player_id)
+			var data: DataCache = AP.instance.conn.get_gamedata_for_player(hint.item.src_player_id)
 
 			var dest := BaseConsole.make_player(hint.item.dest_player_id).centered()
 			var itm := hint.item.output().centered()
 			var src := BaseConsole.make_player(hint.item.src_player_id).centered()
 			var loc := BaseConsole.make_location(hint.item.loc_id, data).centered()
 			var status := hint.make_status().centered()
-			if hint.item.dest_player_id == Archipelago.conn.player_id:
+			if hint.item.dest_player_id == AP.instance.conn.player_id:
 				if hint.status not in [NetworkHint.Status.FOUND,NetworkHint.Status.NOT_FOUND]:
 					status.clicked.connect(func(_btn):
 						var vbox := hint_console.pop_dropdown(status)
@@ -236,7 +245,7 @@ func refresh_hints():
 							btn.text = NetworkHint.status_names[s]
 							btn.set_anchors_preset(Control.PRESET_HCENTER_WIDE)
 							btn.pressed.connect(func():
-								Archipelago.conn.update_hint(hint.item.loc_id, hint.item.src_player_id, s)
+								AP.instance.conn.update_hint(hint.item.loc_id, hint.item.src_player_id, s)
 								vbox.get_window().close_requested.emit())
 							vbox.add_child(btn)
 						)
@@ -249,10 +258,10 @@ func refresh_hints():
 	hint_console.queue_redraw()
 
 func filter_allow(hint: NetworkHint) -> bool:
-	var recv_name := Archipelago.conn.get_player_name(hint.item.dest_player_id, false)
+	var recv_name := AP.instance.conn.get_player_name(hint.item.dest_player_id, false)
 	var item_name := hint.item.get_name()
-	var find_name := Archipelago.conn.get_player_name(hint.item.src_player_id, false)
-	var loc_name := Archipelago.conn.get_gamedata_for_player(hint.item.src_player_id).get_loc_name(hint.item.loc_id)
+	var find_name := AP.instance.conn.get_player_name(hint.item.src_player_id, false)
+	var loc_name := AP.instance.conn.get_gamedata_for_player(hint.item.src_player_id).get_loc_name(hint.item.loc_id)
 	#region Add filters if missing
 	if not recv_filters.has(recv_name):
 		recv_filters[recv_name] = true

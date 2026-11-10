@@ -1,4 +1,5 @@
-class_name DataCache
+const DataCache = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/datacache.gd")
+
 
 var item_name_to_id: Dictionary = {}
 var location_name_to_id: Dictionary = {}

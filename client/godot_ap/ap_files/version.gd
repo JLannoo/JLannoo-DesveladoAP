@@ -1,4 +1,6 @@
-class_name Version extends Resource
+extends Resource
+const Version = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/version.gd")
+
 
 @export var major := 0
 @export var minor := 0

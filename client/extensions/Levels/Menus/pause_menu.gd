@@ -1,4 +1,7 @@
 extends "res://Levels/Menus/pause_menu.gd"
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+const GUI = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/managers/gui.gd")
+
 
 func _ready() -> void:
 	super()
@@ -22,4 +25,4 @@ func _ready() -> void:
 	menu_item_container.add_child(button)
 
 func _on_ap_settings_pressed():
-	Archipelago.open_console()
+	AP.instance.open_console()

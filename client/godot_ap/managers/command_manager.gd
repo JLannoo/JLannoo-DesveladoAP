@@ -1,4 +1,9 @@
-class_name CommandManager extends Node
+extends Node
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+const APConsoleCommand = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/console_command.gd")
+const BaseConsole = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/base_console.gd")
+const CommandManager = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/managers/command_manager.gd")
+
 
 signal debug_toggled(disabled: bool)
 

@@ -1,4 +1,16 @@
-@tool class_name BaseConsole extends Control
+@tool extends Control
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+const ConsoleFoldableContainer = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/foldable_container.gd")
+const ConsoleHFlow = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/console_hflow.gd")
+const ConsoleLabel = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/console_label.gd")
+const ConsoleWindowContainer = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console_window_container.gd")
+const DataCache = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/datacache.gd")
+const FontStorage = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/util/font_storage.gd")
+const NetworkHint = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_hint.gd")
+const NetworkItem = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_item.gd")
+const NetworkPlayer = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_player.gd")
+const Util = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/util/util.gd")
+
 
 @export_group("Nodes")
 @export var scroll_cont: ScrollContainer
@@ -135,11 +147,11 @@ static func make_item(id: int, flags: int, data: DataCache) -> ConsoleLabel:
 	return make_text(data.get_item_name(id), ttip, color)
 
 static func make_player(id: int) -> ConsoleLabel:
-	var player: NetworkPlayer = Archipelago.conn.get_player(id)
-	var ttip = "Game: %s" % Archipelago.conn.get_slot(id).game
+	var player: NetworkPlayer = AP.instance.conn.get_player(id)
+	var ttip = "Game: %s" % AP.instance.conn.get_slot(id).game
 	if not player.alias.is_empty():
 		ttip += "\nSlot: %s" % player.name
-	var color := (AP.SpecialColor.OWN_PLAYER if id == Archipelago.conn.player_id else
+	var color := (AP.SpecialColor.OWN_PLAYER if id == AP.instance.conn.player_id else
 		AP.SpecialColor.ANY_PLAYER)
 	return make_text(player.name, ttip, AP.ComplexColor.as_special(color))
 
@@ -219,7 +231,7 @@ func printjson_command(json: Dictionary) -> String:
 	match json.get("type"):
 		"Chat":
 			var msg = json.get("message","")
-			var name_part: ConsoleLabel = Archipelago.conn.get_player(json["slot"]).output()
+			var name_part: ConsoleLabel = AP.instance.conn.get_player(json["slot"]).output()
 			flowbox.add_text_split(name_part)
 			name_part.text += ": "
 			if not msg.is_empty():
@@ -235,25 +247,25 @@ func printjson_command(json: Dictionary) -> String:
 				post_space = true
 			output_data = true
 		"ItemSend", "ItemCheat":
-			if not Archipelago.AP_HIDE_NONLOCAL_ITEMSENDS:
+			if not AP.instance.AP_HIDE_NONLOCAL_ITEMSENDS:
 				output_data = true
-			elif int(json["receiving"]) == Archipelago.conn.player_id:
+			elif int(json["receiving"]) == AP.instance.conn.player_id:
 				output_data = true
 			else:
 				var ni := NetworkItem.from(json["item"], true)
-				if ni.src_player_id == Archipelago.conn.player_id:
+				if ni.src_player_id == AP.instance.conn.player_id:
 					output_data = true
 		"Hint":
-			if int(json["receiving"]) == Archipelago.conn.player_id:
+			if int(json["receiving"]) == AP.instance.conn.player_id:
 				output_data = true
 			else:
 				var ni := NetworkItem.from(json["item"], true)
-				if ni.src_player_id == Archipelago.conn.player_id:
+				if ni.src_player_id == AP.instance.conn.player_id:
 					output_data = true
 		"Join", "Part":
 			var data: Array = json["data"]
 			var elem: Dictionary = data.pop_front()
-			var plyr: NetworkPlayer = Archipelago.conn.get_player(json["slot"])
+			var plyr: NetworkPlayer = AP.instance.conn.get_player(json["slot"])
 			var spl := (elem["text"] as String).split(plyr.get_name(), true, 1)
 			if spl.size() == 2:
 				elem["text"] = spl[0]
@@ -305,17 +317,17 @@ func printjson_out(elems: Array, flowbox: ConsoleHFlow) -> String:
 				part = make_text(txt, "Arbitrary Entrance Name", AP.ComplexColor.as_special(AP.SpecialColor.LOCATION))
 			"player_id":
 				var plyr_id = int(txt)
-				part = Archipelago.conn.get_player(plyr_id).output()
+				part = AP.instance.conn.get_player(plyr_id).output()
 			"item_id":
 				var item_id = int(txt)
 				var plyr_id = int(elem["player"])
-				var data: DataCache = Archipelago.conn.get_gamedata_for_player(plyr_id)
+				var data: DataCache = AP.instance.conn.get_gamedata_for_player(plyr_id)
 				var flags := int(elem["flags"])
 				part = make_item(item_id, flags, data)
 			"location_id":
 				var loc_id = int(txt)
 				var plyr_id = int(elem["player"])
-				var data: DataCache = Archipelago.conn.get_gamedata_for_player(plyr_id)
+				var data: DataCache = AP.instance.conn.get_gamedata_for_player(plyr_id)
 				part = make_location(loc_id, data)
 			"text":
 				part = make_text(txt)
@@ -344,17 +356,17 @@ static func printjson_out_str(elems: Array) -> String:
 		match elem.get("type", "text"):
 			"player_id":
 				var plyr_id = int(txt)
-				txt = Archipelago.conn.get_player(plyr_id).output().text
+				txt = AP.instance.conn.get_player(plyr_id).output().text
 			"item_id":
 				var item_id = int(txt)
 				var plyr_id = int(elem["player"])
-				var data: DataCache = Archipelago.conn.get_gamedata_for_player(plyr_id)
+				var data: DataCache = AP.instance.conn.get_gamedata_for_player(plyr_id)
 				var flags := int(elem["flags"])
 				txt = make_item(item_id, flags, data).text
 			"location_id":
 				var loc_id = int(txt)
 				var plyr_id = int(elem["player"])
-				var data: DataCache = Archipelago.conn.get_gamedata_for_player(plyr_id)
+				var data: DataCache = AP.instance.conn.get_gamedata_for_player(plyr_id)
 				txt = make_location(loc_id, data).text
 		s += txt
 	return s

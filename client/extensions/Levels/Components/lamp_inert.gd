@@ -1,5 +1,7 @@
 extends "res://Levels/Components/lamp_inert.gd"
 
+const UnlockableComponent = preload("res://mods-unpacked/JLannoo-DesveladoAP/UnlockableComponent.gd")
+
 @onready var unlockable: UnlockableComponent = UnlockableComponent.new("Progressive Map")
 
 func _ready():

@@ -1,4 +1,6 @@
-class_name SaveFile
+const APCredentials = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/connect_creds.gd")
+const APLock = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/ap_lock.gd")
+
 
 var aplock: APLock = APLock.new()
 var creds: APCredentials = APCredentials.new()

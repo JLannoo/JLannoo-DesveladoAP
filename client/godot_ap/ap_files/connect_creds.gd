@@ -1,4 +1,6 @@
-class_name APCredentials extends Node
+extends Node
+const APCredentials = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/connect_creds.gd")
+
 
 signal updated(creds: APCredentials)
 

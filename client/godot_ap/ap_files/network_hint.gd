@@ -1,4 +1,9 @@
-class_name NetworkHint
+const AP = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.gd")
+const BaseConsole = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/base_console.gd")
+const ConsoleLabel = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ui/console/console_label.gd")
+const NetworkHint = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_hint.gd")
+const NetworkItem = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/ap_files/network_item.gd")
+
 
 enum Status {
 	UNSPECIFIED = 0,
@@ -60,11 +65,11 @@ static func update_hint_status(targ_status: Status, part: ConsoleLabel):
 
 func as_plain_string() -> String:
 	return "%s %s '%s' (%s) for %s at '%s'" % [
-		Archipelago.conn.get_player_name(item.src_player_id),
+		AP.instance.conn.get_player_name(item.src_player_id),
 		"found" if status == Status.FOUND else "will find",
 		item.get_name(), item.get_classification(),
-		Archipelago.conn.get_player_name(item.dest_player_id),
-		Archipelago.conn.get_gamedata_for_player(item.src_player_id).get_loc_name(item.loc_id)
+		AP.instance.conn.get_player_name(item.dest_player_id),
+		AP.instance.conn.get_gamedata_for_player(item.src_player_id).get_loc_name(item.loc_id)
 	]
 
 func _to_string():

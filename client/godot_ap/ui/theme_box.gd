@@ -1,4 +1,4 @@
-class_name ThemeBox extends CheckBox
+extends CheckBox
 
 signal set_theme(path: String)
 @export var target_theme_path: String
