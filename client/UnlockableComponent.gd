@@ -43,8 +43,6 @@ func _on_ap_connection(_conn: ConnectionInfo = null, _json: Dictionary = {}) -> 
 func _on_item_arrive(item: NetworkItem):
 	if item.get_name() == needed_item:
 		is_enabled = true
-	
-
 func dim_when_locked(target: CanvasItem, unlockable: UnlockableComponent) -> void:
 		var apply = func(enabled): 
 			target.modulate.a = 1.0 if enabled else opacity_dim

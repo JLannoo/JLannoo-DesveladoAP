@@ -6,12 +6,10 @@ signal trap_done
 var is_active: bool = false
 var timer: Timer = Timer.new()
 
-var notification_manager: CanvasLayer
+@onready var nm: CanvasLayer = get_node("/root/ModLoader/JLannoo-DesveladoAP/NotificationManager")
 
 func _ready():
 	add_child(timer)
-
-	notification_manager = get_node("/root/ModLoader/JLannoo-DesveladoAP/NotificationManager")
 
 	timer.one_shot = true
 	timer.connect("timeout", _on_trap_done)
@@ -41,12 +39,12 @@ func _on_trap_done():
 	queue_free()
 
 func _notify(duration: float):
-	var text = "You have been %s-ed" % [notification_manager.wrap_text_with_color(name, Color.MAGENTA)]
+	var text = "You have been %s-ed" % [nm.wrap_text_with_color(name, Color.MAGENTA)]
 
 	if duration:
-		text += " for %s seconds" % [notification_manager.wrap_text_with_color(str(duration), Color.YELLOW)]
+		text += " for %s seconds" % [nm.wrap_text_with_color(str(duration), Color.YELLOW)]
 
-	notification_manager.notify(text)
+	nm.notify(text)
 
 func effect():
 	pass

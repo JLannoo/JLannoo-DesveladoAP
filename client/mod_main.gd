@@ -36,8 +36,8 @@ const LEVEL_DISPLAY_NAME: Dictionary = {
 	"RUN_3":   "Caves Boss",
 }
 
-@export var AP_NOTIFICATION_MANAGER = preload("res://mods-unpacked/JLannoo-DesveladoAP/ui/ap_notification_manager.gd")
-var notification_manager: CanvasLayer
+const AP_NOTIFICATION_MANAGER = preload("res://mods-unpacked/JLannoo-DesveladoAP/ui/ap_notification_manager.gd")
+var nm: AP_NOTIFICATION_MANAGER
 
 const BONUS_COLLECTABLE_EXT = preload("res://mods-unpacked/JLannoo-DesveladoAP/extensions/Levels/Components/bonus_collectable.gd")
 const PLAYER_EXT = preload("res://mods-unpacked/JLannoo-DesveladoAP/extensions/Player/player.gd")
@@ -78,8 +78,8 @@ func _ready() -> void:
 	var tree = get_tree()
 	tree.node_added.connect(_on_node_added)
 	
-	notification_manager = AP_NOTIFICATION_MANAGER.new()
-	add_child(notification_manager)
+	nm = AP_NOTIFICATION_MANAGER.new()
+	add_child(nm)
 	
 	Console.add_command("notification", _trigger_notification, 2)
 	Console.add_command("level_room", _move_to_level_room, 2)
@@ -138,7 +138,7 @@ func _on_room_cleared(s: Room) -> void:
 		AP.instance.collect_location(data.get_loc_id(location_name))
 
 func _trigger_notification(text: String, count: String) -> void:
-	notification_manager.notify(text, count)
+	nm.notify(text, count)
 
 func _move_to_level_room(level_id: String, room_id: String) -> void:
 	Console.print_line("Moving to level %s" % [level_id])
@@ -201,7 +201,7 @@ func _handle_item_received(item: NetworkItem):
 func _handle_bone_received(item: NetworkItem):
 	var count = GameManager.count_collectables()
 	GameManager.add_collectable(count+1)
-	notification_manager.notify_ap_item(item, "%s / 15" % (count+1))
+	nm.notify_ap_item(item, "%s / 15" % (count+1))
 
 func _handle_map_received(item: NetworkItem):
 	var zone_display_name = item.get_name().split(" Map Part")[0]
@@ -220,7 +220,7 @@ func _handle_map_received(item: NetworkItem):
 
 	StageManager.ap_add_map_part(zone_id)
 	
-	notification_manager.notify_ap_item(item)
+	nm.notify_ap_item(item)
 	
 	if not first_map_found:
 		first_map_found = true
@@ -228,8 +228,10 @@ func _handle_map_received(item: NetworkItem):
 		MapMenu.toggle_map(true)
 
 # Functional side of mechanic unlocks are handled by UnlockableComponent
+# Notification is done here because items are not initialized until a level
+# with them in it loads
 func _handle_unlock_received(item: NetworkItem):
-	notification_manager.notify_ap_item(item)
+	nm.notify_ap_item(item)
 
 func _handle_trap_received(item: NetworkItem):
 	var item_name = item.get_name().to_lower()
