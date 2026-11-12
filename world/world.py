@@ -36,3 +36,10 @@ class DesveladoWorld(World):
 
     def get_filler_item_name(self) -> str:
         return items.create_random_filler_item(self).name
+
+    def fill_slot_data(self) -> Mapping[str, Any]:
+        return {
+            "goal": self.options.goal.value,
+            "deathlink": self.options.deathlink.value,
+            "deathlink_amnesty": self.options.deathlink_amnesty.value,
+        }

@@ -36,6 +36,8 @@ const LEVEL_DISPLAY_NAME: Dictionary = {
 	"RUN_3":   "Caves Boss",
 }
 
+enum GAME_GOAL {finish = 1, bonnie = 2}
+
 const AP_NOTIFICATION_MANAGER = preload("res://mods-unpacked/JLannoo-DesveladoAP/ui/ap_notification_manager.gd")
 var nm: AP_NOTIFICATION_MANAGER
 
@@ -43,6 +45,8 @@ const BONUS_COLLECTABLE_EXT = preload("res://mods-unpacked/JLannoo-DesveladoAP/e
 const PLAYER_EXT = preload("res://mods-unpacked/JLannoo-DesveladoAP/extensions/Player/player.gd")
 
 var first_map_found: bool = false
+var deathlink_amnesty: int
+var deathlink_counter: int = 0
 
 const AP_SCENE = preload("res://mods-unpacked/JLannoo-DesveladoAP/godot_ap/autoloads/archipelago.tscn")
 var ap_node: AP
@@ -91,10 +95,12 @@ func _ready() -> void:
 	tree.root.add_child.call_deferred(ap_node)
 	await ap_node.ready
 
-	_try_ap_connect()
+	if OS.has_feature("editor") or OS.is_debug_build():
+		AP.instance.creds.update("localhost", AP.instance.creds.port, AP.instance.creds.slot, "")
+	else:
+		AP.instance.creds.update("archipelago.gg", "", "", "")
 
 	AP.instance.on_attach_console.connect(_on_attach_console)
-
 	AP.instance.connected.connect(_on_ap_connected)
 
 func _on_node_added(node: Node) -> void:
@@ -153,10 +159,13 @@ func _move_to_level_room(level_id: String, room_id: String) -> void:
 
 func _on_player_died():
 	if AP.instance.is_ap_connected() and AP.instance.is_deathlink():
-		AP.instance.conn.send_deathlink()
+		deathlink_counter += 1
 
-func _try_ap_connect():
-	AP.instance.ap_connect("localhost", "38281", "Desvelado")
+	if deathlink_counter >= deathlink_amnesty:
+		AP.instance.conn.send_deathlink()
+		deathlink_counter = 0
+		nm.notify("You have sent a %s" % [nm.wrap_text_with_color("Death Link", Color("#e84d4d"))])
+		
 
 func _on_attach_console():
 	ap_console = get_node("/root/Archipelago/Console")
@@ -170,9 +179,15 @@ func _on_attach_console():
 func _on_close_console():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
-func _on_ap_connected(_conn: ConnectionInfo, _json: Dictionary):
+func _on_ap_connected(_conn: ConnectionInfo, json: Dictionary):
 	AP.instance.conn.obtained_item.connect(_on_item_receive)
 	AP.instance.conn.force_scout_all()
+	
+	var deathlink = bool(json.slot_data.deathlink)
+	
+	if bool(json.slot_data.deathlink):
+		AP.instance.set_deathlink(deathlink)
+		deathlink_amnesty = json.slot_data.deathlink_amnesty
 
 func _on_item_receive(item: NetworkItem):
 	_handle_item_received(item)
@@ -196,7 +211,6 @@ func _handle_item_received(item: NetworkItem):
 	elif item_name.contains("Trap"):
 		_handle_trap_received(item)
 		return
-	
 
 func _handle_bone_received(item: NetworkItem):
 	var count = GameManager.count_collectables()
