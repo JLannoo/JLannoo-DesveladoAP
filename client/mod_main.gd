@@ -193,7 +193,7 @@ func _handle_item_received(item: NetworkItem):
 		_handle_unlock_received(item)
 		return
 
-	elif item.name.contains("Trap"):
+	elif item_name.contains("Trap"):
 		_handle_trap_received(item)
 		return
 	
