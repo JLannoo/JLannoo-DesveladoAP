@@ -1,4 +1,4 @@
-from BaseClasses import CollectionState
+from BaseClasses import CollectionState, ItemClassification
 
 from .bases import DesveladoTestBase
 from .. import items, regions, room_data
@@ -40,6 +40,8 @@ class TestMinimalAccessibility(DesveladoTestBase):
 
 
 class TestMapAccess(DesveladoTestBase):
+    options = {"goal": "bonnie"} # Use Bonnie goal to have all regions
+
     def state_with(self, item_names: list[str]) -> CollectionState:
         state = CollectionState(self.multiworld)
         for name in item_names:
@@ -55,6 +57,9 @@ class TestMapAccess(DesveladoTestBase):
         display_to_level = {display: name for name, display in regions.LEVELS_DISPLAY_NAME.items()}
 
         for entrance in self.world.get_region("Map").exits:
+            if entrance.connected_region and entrance.connected_region.name == regions.LEVELS_DISPLAY_NAME["ZONA_Bonnie"]:
+                continue
+
             if entrance.connected_region:
                 level_name = display_to_level[entrance.connected_region.name.split(" - ")[0]]
                 required = regions.get_required_map_parts_names(data, level_name)
@@ -69,7 +74,28 @@ class TestMapAccess(DesveladoTestBase):
                 self.fail(f"Entrance {entrance.name} is not connected to a region")
 
 
+class TestBonnieRoomAccess(DesveladoTestBase):
+    options = {"goal": "bonnie"}
+
+    def state_with(self, beaten_final_boss: bool, bones: int) -> CollectionState:
+        state = CollectionState(self.multiworld)
+        if beaten_final_boss:
+            state.collect(items.DesveladoItem("Beaten Final Boss", ItemClassification.progression, None, self.player), True)
+        for _ in range(bones):
+            state.collect(self.world.create_item("Bonnie Bone"), True)
+        return state
+
+    def test_bonnie_room_requires_final_boss_and_every_bone(self) -> None:
+        bonnie_room = self.world.get_region(regions.LEVELS_DISPLAY_NAME["ZONA_Bonnie"])
+
+        self.assertTrue(bonnie_room.can_reach(self.state_with(True, items.BONNIE_BONES_AMOUNT)))
+        self.assertFalse(bonnie_room.can_reach(self.state_with(False, items.BONNIE_BONES_AMOUNT)))
+        self.assertFalse(bonnie_room.can_reach(self.state_with(True, items.BONNIE_BONES_AMOUNT - 1)))
+
+
 class TestMechanicGates(DesveladoTestBase):
+    options = {"goal": "bonnie"} # Use Bonnie goal to have all regions
+    
     def state_with(self, item_names: list[str]) -> CollectionState:
         state = CollectionState(self.multiworld)
         for name in item_names:

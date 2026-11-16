@@ -19,6 +19,11 @@ class TestRoomData(unittest.TestCase):
 
     def test_every_level_has_display_name_and_map_part(self) -> None:
         for level in self.data:
+
+            # Ignore Caves Boss and Bonnie because they don't have map parts.
+            if "test_boss_level_L3_J" == level.name or "ZONA_Bonnie" == level.name:
+                continue
+
             self.assertIn(level.name, regions.LEVELS_DISPLAY_NAME)
             self.assertIn(regions.get_level_map_part_name(level.name), items.ITEM_NAME_TO_ID)
 
