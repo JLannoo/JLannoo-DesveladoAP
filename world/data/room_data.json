@@ -4939,6 +4939,27 @@
           "name": "Room"
         }
       ]
+    },
+    {
+      "id": 11,
+      "is_boss_level": false,
+      "name": "ZONA_Bonnie",
+      "necessary_levels": [
+        10
+      ],
+      "room_connections": [],
+      "rooms": [
+        {
+          "exits": [],
+          "index": 0,
+          "is_bonus": false,
+          "is_branch": false,
+          "is_zone_end": false,
+          "locations": [],
+          "mechanics": [],
+          "name": "Room_Bonnie"
+        }
+      ]
     }
   ]
 }

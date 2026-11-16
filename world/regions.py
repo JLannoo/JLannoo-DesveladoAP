@@ -27,6 +27,8 @@ LEVELS_DISPLAY_NAME = {
     "test_boss_level_L1_J": "Castle Boss",
     "test_boss_level_L2_J": "Sewers Boss",
     "test_boss_level_L3_J": "Caves Boss",
+
+    "ZONA_Bonnie": "Bonnie's Room"
 }
 
 def get_level_map_part_name(level_name: str):
@@ -51,7 +53,7 @@ def get_region_display_name(
 
     name = f"{LEVELS_DISPLAY_NAME.get(level_name, level_name)} - {room_name}"
 
-    if "boss" in level_name.lower():
+    if "boss" in level_name.lower() or "bonnie" in  level_name.lower():
         name = name.split(" - ")[0]
 
     return name
@@ -73,6 +75,10 @@ def create_all_regions_and_locations(world: DesveladoWorld, data: list[room_data
     regions: list[Region] = []
 
     for level in data:
+        # Bonnie's room is not ensured reachable if the goal isn't Bonnie. We skip declaring the region.
+        if "bonnie" in level.name.lower() and world.options.goal.value != world.options.goal.option_bonnie:
+            continue
+
         for room in level.rooms:
             region = Region(get_region_display_name(level, room), world.player, world.multiworld)
             locs: dict[str, int] = {}
@@ -140,8 +146,18 @@ def create_map_connections(world: DesveladoWorld, data: list[room_data.Desvelado
     map_region.connect(level2_boss, f"Map to {level2_boss.name}", HasAll(*get_required_map_parts_names(data, "test_boss_level_L2_J")))
     map_region.connect(level3_boss, f"Map to {level3_boss.name}", HasAll(*get_required_map_parts_names(data, "test_boss_level_L3_J")))
 
+    if world.options.goal.value == world.options.goal.option_bonnie:
+        level_bonnie = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME["ZONA_Bonnie"], ""))
+        map_region.connect(level_bonnie, f"Map to {level_bonnie.name}", Has("Beaten Final Boss") & Has("Bonnie Bone", items.BONNIE_BONES_AMOUNT))
+
     world.multiworld.regions += [map_region]
 
 def create_events(world: DesveladoWorld):
-    final_region = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME['test_boss_level_L3_J'], ""))
-    final_region.add_event("Victory", "Victory", location_type=locations.DesveladoLocation, item_type=items.DesveladoItem)
+    final_boss_region = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME['test_boss_level_L3_J'], ""))
+    final_boss_region.add_event("Beat Final Boss", "Beaten Final Boss", location_type=locations.DesveladoLocation, item_type=items.DesveladoItem)
+
+    if world.options.goal.value == world.options.goal.option_finish:
+        final_boss_region.add_event("Victory", "Victory", location_type=locations.DesveladoLocation, item_type=items.DesveladoItem)
+    else:
+        bonnie_room_region = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME['ZONA_Bonnie'], ""))
+        bonnie_room_region.add_event("Victory", "Victory", location_type=locations.DesveladoLocation, item_type=items.DesveladoItem)

@@ -29,7 +29,7 @@
 
 extends SceneTree
 
-const LEVELS = ["ZONA1_1", "ZONA1_2", "ZONA2_1", "ZONA2_2", "ZONA2_3", "ZONA3_1", "ZONA3_2", "ZONA3_3"]
+const LEVELS = ["ZONA1_1", "ZONA1_2", "ZONA2_1", "ZONA2_2", "ZONA2_3", "ZONA3_1", "ZONA3_2", "ZONA3_3", "ZONA_Bonnie"]
 const BOSS_LEVELS = ["test_boss_level_L1_J", "test_boss_level_L2_J", "test_boss_level_L3_J"]
 
 # Instanced scene path -> mechanic. Checked before scripts, since some
