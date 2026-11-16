@@ -50,7 +50,6 @@ MAP_ITEMS: List[DesveladoItemData] = [
 
     DesveladoItemData("Sewers Boss Map Part", ItemType.map_part, 8),
     DesveladoItemData("Castle Boss Map Part", ItemType.map_part, 9),
-    DesveladoItemData("Caves Boss Map Part", ItemType.map_part, 10),
 ]
 
 UNLOCK_ITEMS: List[DesveladoItemData] = [

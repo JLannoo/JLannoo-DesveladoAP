@@ -7,11 +7,6 @@
       "necessary_levels": [],
       "room_connections": [
         {
-          "dest_room": "Room_01",
-          "source_room": "Room_00",
-          "type": "door"
-        },
-        {
           "dest_room": "Room_02",
           "source_room": "Room_01",
           "type": "door"
@@ -173,27 +168,6 @@
         }
       ],
       "rooms": [
-        {
-          "exits": [
-            {
-              "dest_room": "Room_01",
-              "start_open": true,
-              "type": "door"
-            }
-          ],
-          "index": 0,
-          "is_bonus": false,
-          "is_branch": false,
-          "is_zone_end": false,
-          "locations": [
-            {
-              "name": "clear",
-              "type": "room_clear"
-            }
-          ],
-          "mechanics": [],
-          "name": "Room_00"
-        },
         {
           "exits": [
             {
@@ -843,10 +817,6 @@
           "is_zone_end": true,
           "locations": [
             {
-              "name": "clear",
-              "type": "room_clear"
-            },
-            {
               "name": "map_part",
               "type": "map_part"
             }
@@ -1280,10 +1250,6 @@
           "is_branch": false,
           "is_zone_end": true,
           "locations": [
-            {
-              "name": "clear",
-              "type": "room_clear"
-            },
             {
               "name": "map_part",
               "type": "map_part"
@@ -1847,10 +1813,6 @@
           "is_branch": false,
           "is_zone_end": true,
           "locations": [
-            {
-              "name": "clear",
-              "type": "room_clear"
-            },
             {
               "name": "map_part",
               "type": "map_part"
@@ -2443,10 +2405,6 @@
           "is_zone_end": true,
           "locations": [
             {
-              "name": "clear",
-              "type": "room_clear"
-            },
-            {
               "name": "map_part",
               "type": "map_part"
             }
@@ -2869,10 +2827,6 @@
           "is_branch": false,
           "is_zone_end": true,
           "locations": [
-            {
-              "name": "clear",
-              "type": "room_clear"
-            },
             {
               "name": "map_part",
               "type": "map_part"
@@ -3719,12 +3673,7 @@
           "is_bonus": false,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "name": "clear",
-              "type": "room_clear"
-            }
-          ],
+          "locations": [],
           "mechanics": [],
           "name": "Room_26"
         },
@@ -3735,10 +3684,6 @@
           "is_branch": false,
           "is_zone_end": true,
           "locations": [
-            {
-              "name": "clear",
-              "type": "room_clear"
-            },
             {
               "name": "map_part",
               "type": "map_part"
@@ -4254,10 +4199,6 @@
           "is_branch": false,
           "is_zone_end": true,
           "locations": [
-            {
-              "name": "clear",
-              "type": "room_clear"
-            },
             {
               "name": "map_part",
               "type": "map_part"
@@ -4833,10 +4774,6 @@
           "is_zone_end": true,
           "locations": [
             {
-              "name": "clear",
-              "type": "room_clear"
-            },
-            {
               "name": "map_part",
               "type": "map_part"
             }
@@ -4993,12 +4930,7 @@
           "is_bonus": false,
           "is_branch": false,
           "is_zone_end": false,
-          "locations": [
-            {
-              "name": "clear",
-              "type": "room_clear"
-            }
-          ],
+          "locations": [],
           "mechanics": [
             "chandelier",
             "ghost_switch",

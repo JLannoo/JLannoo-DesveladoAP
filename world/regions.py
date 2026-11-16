@@ -114,7 +114,7 @@ def connect_regions(world: DesveladoWorld, data: list[room_data.DesveladoLevelDa
 def create_map_connections(world: DesveladoWorld, data: list[room_data.DesveladoLevelData]):
     map_region = Region("Map", world.player, world.multiworld)
 
-    level1_1_start = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME['ZONA1_1'], "Room_00"))
+    level1_1_start = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME['ZONA1_1'], "Room_01"))
     level1_2_start = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME['ZONA1_2'], "Room_48"))
     level2_1_start = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME['ZONA2_1'], "Room_00"))
     level2_2_start = world.get_region(get_region_display_name(LEVELS_DISPLAY_NAME['ZONA2_2'], "Room_57"))

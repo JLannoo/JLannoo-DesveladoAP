@@ -84,10 +84,11 @@ const IGNORED_SCRIPT_PREFIXES = [
 
 # We specifically ignore these rooms, they are inaccesible
 const IGNORED_ROOM_SCRIPTS = [
+    "res://Levels/Demo01_Levels/Joaco/room_00_J.tscn", # Room 00 doesn't trigger a 'clear' event
     "res://Levels/Demo01_Levels/Joaco/room_solofondoL1Pequeño_J.tscn",
     "res://Levels/Demo01_Levels/Joaco/room_87_J.tscn",
     "res://Levels/Demo01_Levels/Joaco/room_87b_J.tscn",
-    "res://Levels/Demo01_Levels/Joaco/room_90_J.tscn"
+    "res://Levels/Demo01_Levels/Joaco/room_90_J.tscn",
 ]
 
 func _initialize() -> void:
@@ -102,6 +103,9 @@ func _initialize() -> void:
         var scene = load("res://Levels/BossLevels/%s.tscn" % level_name).instantiate()
         levels.append(extract_level(level_name, scene))
         scene.free()
+
+    # Sort levels by id for easier handling later
+    levels.sort_custom(func(a,b): return a.id < b.id)
 
     var json = JSON.stringify({"levels": levels}, "  ")
     var args = OS.get_cmdline_user_args()
@@ -182,9 +186,10 @@ func extract_room(room: Node, index: int, index_to_name: Dictionary) -> Dictiona
 
     # We count clearing a room as a location
     if not room.IsBonus:
-        locations.append({"name": "clear", "type": "room_clear"})
+        if room.door != null and not room.door.end_level:
+            locations.append({"name": "clear", "type": "room_clear"})
 
-    if room.door != null:
+    if room.door != null and not room.door.end_level:
         exits.append(door_exit(room.door, index, index_to_name))
 
     for node in room.find_children("*", "", true, false):
@@ -246,10 +251,6 @@ func extract_room(room: Node, index: int, index_to_name: Dictionary) -> Dictiona
 
 
 func door_exit(door: Node, index: int, index_to_name: Dictionary) -> Dictionary:
-    # end_level doors point to a stage, not a room
-    if door.end_level:
-        return {"type": "end_level", "stage": door.target_room, "start_open": door.is_open}
-
     var exit = room_exit("door", door.target_room, index_to_name)
     exit.start_open = door.is_open
     return exit
