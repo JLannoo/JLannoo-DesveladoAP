@@ -34,6 +34,8 @@ const LEVEL_DISPLAY_NAME: Dictionary = {
 	"ZONE3_2": "Caves 2",
 	"ZONE3_3": "Caves 3",
 	"RUN_3":   "Caves Boss",
+
+	"BONNIE_ROOM": "Bonnie's Room",
 }
 
 enum GAME_GOAL {finish = 1, bonnie = 2}
@@ -68,7 +70,7 @@ func install_script_extensions() -> void:
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/bonus_collectable.gd"))
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/collectable_notification.gd"))
 
-	# ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Engine/game_manager.gd"))
+	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Engine/level_manager.gd"))
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Engine/stage_manager.gd"))
 	
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/switch.gd")) # Cover both the key_switch and ghost_switch
@@ -76,7 +78,7 @@ func install_script_extensions() -> void:
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/lamp_chandelier.gd"))
 	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/ghost_wall.gd"))
 	
-	# ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Player/player.gd"))
+	ModLoaderMod.install_script_extension(extensions_dir_path.path_join("/Levels/Components/bonnie.gd"))
 
 func _ready() -> void:
 	var tree = get_tree()
@@ -281,3 +283,7 @@ func _execute_trap(trap: String):
 		var t = ConfusionTrap.new()
 		add_child(t)
 		t.trigger_trap(30.0)
+
+func ap_send_goal():
+	AP.instance.set_client_status(AP.ClientStatus.CLIENT_GOAL)
+	nm.notify("Contratulations! You have reached your goal")
